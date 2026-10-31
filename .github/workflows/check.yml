@@ -1,0 +1,42 @@
+name: Rust agent checks
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Catalog and source consistency
+        run: |
+          cargo fmt --all -- --check
+          python3 scripts/check_project.py
+          python3 scripts/test_docker_runner.py
+          python3 scripts/test_l4_profiles.py
+          python3 scripts/check_wire.py
+      - name: Capture build prerequisites
+        run: sudo apt-get update && sudo apt-get install -y libpcap-dev pkg-config
+      - name: Resolve dependencies
+        run: cargo fetch --locked
+      - name: Build
+        run: cargo build --workspace --locked
+      - name: Sender integration tests, including 1000 datagrams without ACKs
+        run: cargo test --workspace --locked -- --include-ignored
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked --features packet-capture
+      - name: libpcap offline fixture integration
+        run: cargo test --lib --locked --features packet-capture
+      - name: Preserve resolved dependency versions
+        uses: actions/upload-artifact@v4
+        with:
+          name: Cargo.lock
+          path: Cargo.lock
+

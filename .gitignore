@@ -1,0 +1,9 @@
+/target/
+/reports/
+/local-auth/
+/local-demo/
+/profiles/
+*.key
+__pycache__/
+*.pyc
+

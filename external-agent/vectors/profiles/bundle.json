@@ -1,0 +1,5299 @@
+{
+  "schema_version": 1,
+  "presets": {
+    "basic": [
+      "TCP-001",
+      "UDP-001",
+      "UDP-010",
+      "HTTP-001",
+      "HTTP-003",
+      "HTTP-007"
+    ],
+    "sophisticated": [
+      "TCP-001",
+      "TCP-016",
+      "TCP-017",
+      "TCP-018",
+      "TCP-019",
+      "TCP-022",
+      "TCP-023",
+      "TCP-033",
+      "UDP-001",
+      "UDP-002",
+      "UDP-003",
+      "UDP-004",
+      "UDP-006",
+      "UDP-007",
+      "UDP-008",
+      "UDP-009",
+      "UDP-010",
+      "UDP-012",
+      "UDP-015",
+      "ICMP-001",
+      "ICMP-002",
+      "ICMP-006",
+      "IP-003",
+      "DNS-001",
+      "DNS-002",
+      "DNS-003",
+      "DNS-004",
+      "DNS-005",
+      "DNS-006",
+      "DNS-007",
+      "DNS-008",
+      "DNS-009",
+      "DNS-010",
+      "DNS-011",
+      "DNS-012",
+      "DNS-013",
+      "DNS-014",
+      "DNS-015",
+      "DNS-016",
+      "DNS-021",
+      "DNS-022",
+      "NTP-001",
+      "NTP-002",
+      "NTP-003",
+      "NTP-004",
+      "NTP-005",
+      "NTP-006",
+      "SIP-001",
+      "SIP-002",
+      "SIP-003",
+      "SIP-004",
+      "SIP-005",
+      "SIP-007",
+      "SIP-008",
+      "SIP-011",
+      "HTTP-001",
+      "HTTP-002",
+      "HTTP-003",
+      "HTTP-004",
+      "HTTP-005",
+      "HTTP-006",
+      "HTTP-007",
+      "HTTP-008",
+      "HTTP-009",
+      "HTTP-010",
+      "HTTP-011",
+      "HTTP-012",
+      "HTTP-013",
+      "HTTP-014",
+      "HTTP-015",
+      "HTTP-016",
+      "HTTP-017",
+      "HTTP-018",
+      "HTTP-019",
+      "HTTP-020",
+      "HTTP-035",
+      "HTTP-036",
+      "HTTP-037",
+      "HTTP-038",
+      "TLS-001",
+      "TLS-002",
+      "TLS-003",
+      "TLS-004",
+      "TLS-005",
+      "TLS-006",
+      "TLS-007",
+      "TLS-008",
+      "TLS-009",
+      "TLS-010",
+      "TLS-013"
+    ],
+    "researcher": [
+      "TCP-001",
+      "TCP-002",
+      "TCP-003",
+      "TCP-004",
+      "TCP-005",
+      "TCP-006",
+      "TCP-007",
+      "TCP-008",
+      "TCP-009",
+      "TCP-010",
+      "TCP-011",
+      "TCP-012",
+      "TCP-013",
+      "TCP-014",
+      "TCP-015",
+      "TCP-016",
+      "TCP-017",
+      "TCP-018",
+      "TCP-019",
+      "TCP-020",
+      "TCP-021",
+      "TCP-022",
+      "TCP-023",
+      "TCP-024",
+      "TCP-025",
+      "TCP-026",
+      "TCP-027",
+      "TCP-028",
+      "TCP-029",
+      "TCP-030",
+      "TCP-031",
+      "TCP-032",
+      "TCP-033",
+      "UDP-001",
+      "UDP-002",
+      "UDP-003",
+      "UDP-004",
+      "UDP-005",
+      "UDP-006",
+      "UDP-007",
+      "UDP-008",
+      "UDP-009",
+      "UDP-010",
+      "UDP-011",
+      "UDP-012",
+      "UDP-013",
+      "UDP-014",
+      "UDP-015",
+      "ICMP-001",
+      "ICMP-002",
+      "ICMP-003",
+      "ICMP-004",
+      "ICMP-005",
+      "ICMP-006",
+      "ICMP-007",
+      "ICMP-008",
+      "ICMP-009",
+      "ICMP-010",
+      "ICMP-011",
+      "ICMP-012",
+      "ICMP-013",
+      "ICMP-014",
+      "IP-001",
+      "IP-002",
+      "IP-003",
+      "IP-004",
+      "IP-005",
+      "IP-006",
+      "IP-007",
+      "IP-008",
+      "IP-009",
+      "IP-010",
+      "IP-011",
+      "IP-012",
+      "IP-013",
+      "IP-014",
+      "IP-015",
+      "IP-016",
+      "IP-017",
+      "IP-018",
+      "IP-019",
+      "DNS-001",
+      "DNS-002",
+      "DNS-003",
+      "DNS-004",
+      "DNS-005",
+      "DNS-006",
+      "DNS-007",
+      "DNS-008",
+      "DNS-009",
+      "DNS-010",
+      "DNS-011",
+      "DNS-012",
+      "DNS-013",
+      "DNS-014",
+      "DNS-015",
+      "DNS-016",
+      "DNS-017",
+      "DNS-018",
+      "DNS-019",
+      "DNS-020",
+      "DNS-021",
+      "DNS-022",
+      "NTP-001",
+      "NTP-002",
+      "NTP-003",
+      "NTP-004",
+      "NTP-005",
+      "NTP-006",
+      "NTP-007",
+      "NTP-008",
+      "SIP-001",
+      "SIP-002",
+      "SIP-003",
+      "SIP-004",
+      "SIP-005",
+      "SIP-006",
+      "SIP-007",
+      "SIP-008",
+      "SIP-009",
+      "SIP-010",
+      "SIP-011",
+      "HTTP-001",
+      "HTTP-002",
+      "HTTP-003",
+      "HTTP-004",
+      "HTTP-005",
+      "HTTP-006",
+      "HTTP-007",
+      "HTTP-008",
+      "HTTP-009",
+      "HTTP-010",
+      "HTTP-011",
+      "HTTP-012",
+      "HTTP-013",
+      "HTTP-014",
+      "HTTP-015",
+      "HTTP-016",
+      "HTTP-017",
+      "HTTP-018",
+      "HTTP-019",
+      "HTTP-020",
+      "HTTP-021",
+      "HTTP-022",
+      "HTTP-023",
+      "HTTP-024",
+      "HTTP-025",
+      "HTTP-026",
+      "HTTP-027",
+      "HTTP-028",
+      "HTTP-029",
+      "HTTP-030",
+      "HTTP-031",
+      "HTTP-032",
+      "HTTP-033",
+      "HTTP-034",
+      "HTTP-035",
+      "HTTP-036",
+      "HTTP-037",
+      "HTTP-038",
+      "TLS-001",
+      "TLS-002",
+      "TLS-003",
+      "TLS-004",
+      "TLS-005",
+      "TLS-006",
+      "TLS-007",
+      "TLS-008",
+      "TLS-009",
+      "TLS-010",
+      "TLS-011",
+      "TLS-012",
+      "TLS-013",
+      "SPECIAL-001",
+      "SPECIAL-002",
+      "SPECIAL-003",
+      "SPECIAL-004",
+      "SPECIAL-005",
+      "SPECIAL-006",
+      "SPECIAL-007",
+      "SPECIAL-008",
+      "SPECIAL-009",
+      "SPECIAL-010"
+    ],
+    "hacker": [
+      "TCP-028",
+      "TCP-029",
+      "TCP-030",
+      "TCP-031",
+      "TCP-032",
+      "UDP-002",
+      "UDP-013",
+      "UDP-014",
+      "ICMP-005",
+      "ICMP-007",
+      "ICMP-009",
+      "ICMP-011",
+      "ICMP-012",
+      "ICMP-013",
+      "ICMP-014",
+      "IP-006",
+      "IP-007",
+      "IP-008",
+      "IP-009",
+      "IP-010",
+      "IP-019",
+      "DNS-007",
+      "DNS-017",
+      "DNS-018",
+      "DNS-019",
+      "DNS-020",
+      "NTP-007",
+      "NTP-008",
+      "SIP-002",
+      "SIP-003",
+      "SIP-006",
+      "SIP-009",
+      "SIP-010",
+      "HTTP-009",
+      "HTTP-017",
+      "HTTP-021",
+      "HTTP-022",
+      "HTTP-023",
+      "HTTP-024",
+      "HTTP-025",
+      "HTTP-026",
+      "HTTP-027",
+      "HTTP-028",
+      "HTTP-029",
+      "HTTP-030",
+      "HTTP-031",
+      "HTTP-032",
+      "HTTP-033",
+      "HTTP-034",
+      "TLS-006",
+      "TLS-009",
+      "TLS-010",
+      "TLS-011",
+      "TLS-012",
+      "SPECIAL-001",
+      "SPECIAL-002",
+      "SPECIAL-003",
+      "SPECIAL-004",
+      "SPECIAL-005",
+      "SPECIAL-006",
+      "SPECIAL-007",
+      "SPECIAL-008",
+      "SPECIAL-009",
+      "SPECIAL-010"
+    ],
+    "l4": [
+      "TCP-001",
+      "TCP-002",
+      "TCP-003",
+      "TCP-004",
+      "TCP-005",
+      "TCP-006",
+      "TCP-007",
+      "TCP-008",
+      "TCP-009",
+      "TCP-010",
+      "TCP-011",
+      "TCP-012",
+      "TCP-013",
+      "TCP-014",
+      "TCP-015",
+      "TCP-016",
+      "TCP-017",
+      "TCP-018",
+      "TCP-019",
+      "TCP-020",
+      "TCP-021",
+      "TCP-022",
+      "TCP-023",
+      "TCP-024",
+      "TCP-025",
+      "TCP-026",
+      "TCP-027",
+      "TCP-028",
+      "TCP-029",
+      "TCP-030",
+      "TCP-031",
+      "TCP-032",
+      "TCP-033",
+      "UDP-001",
+      "UDP-002",
+      "UDP-003",
+      "UDP-004",
+      "UDP-005",
+      "UDP-006",
+      "UDP-007",
+      "UDP-008",
+      "UDP-009",
+      "UDP-010",
+      "UDP-011",
+      "UDP-012",
+      "UDP-013",
+      "UDP-014",
+      "UDP-015"
+    ]
+  },
+  "configs": {
+    "TCP-001": {
+      "vectors": [
+        "TCP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-002": {
+      "vectors": [
+        "TCP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-003": {
+      "vectors": [
+        "TCP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-004": {
+      "vectors": [
+        "TCP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-005": {
+      "vectors": [
+        "TCP-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-006": {
+      "vectors": [
+        "TCP-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-007": {
+      "vectors": [
+        "TCP-007"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-008": {
+      "vectors": [
+        "TCP-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-009": {
+      "vectors": [
+        "TCP-009"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-010": {
+      "vectors": [
+        "TCP-010"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-011": {
+      "vectors": [
+        "TCP-011"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-012": {
+      "vectors": [
+        "TCP-012"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-013": {
+      "vectors": [
+        "TCP-013"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-014": {
+      "vectors": [
+        "TCP-014"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-015": {
+      "vectors": [
+        "TCP-015"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-016": {
+      "vectors": [
+        "TCP-016"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-017": {
+      "vectors": [
+        "TCP-017"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9003,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-018": {
+      "vectors": [
+        "TCP-018"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9003,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-019": {
+      "vectors": [
+        "TCP-019"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9003,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-020": {
+      "vectors": [
+        "TCP-020"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-021": {
+      "vectors": [
+        "TCP-021"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-022": {
+      "vectors": [
+        "TCP-022"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-023": {
+      "vectors": [
+        "TCP-023"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-024": {
+      "vectors": [
+        "TCP-024"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-025": {
+      "vectors": [
+        "TCP-025"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-026": {
+      "vectors": [
+        "TCP-026"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-027": {
+      "vectors": [
+        "TCP-027"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-028": {
+      "vectors": [
+        "TCP-028"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-029": {
+      "vectors": [
+        "TCP-029"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-030": {
+      "vectors": [
+        "TCP-030"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-031": {
+      "vectors": [
+        "TCP-031"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-032": {
+      "vectors": [
+        "TCP-032"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-033": {
+      "vectors": [
+        "TCP-033"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9003,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-001": {
+      "vectors": [
+        "UDP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-002": {
+      "vectors": [
+        "UDP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9004,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-003": {
+      "vectors": [
+        "UDP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-004": {
+      "vectors": [
+        "UDP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-005": {
+      "vectors": [
+        "UDP-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-006": {
+      "vectors": [
+        "UDP-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-007": {
+      "vectors": [
+        "UDP-007"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-008": {
+      "vectors": [
+        "UDP-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-009": {
+      "vectors": [
+        "UDP-009"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-010": {
+      "vectors": [
+        "UDP-010"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": {
+        "run_id": "00000000000000000000000000000001",
+        "key_file": "measurement.key",
+        "await_ack": false
+      },
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-011": {
+      "vectors": [
+        "UDP-011"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-012": {
+      "vectors": [
+        "UDP-012"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-013": {
+      "vectors": [
+        "UDP-013"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-014": {
+      "vectors": [
+        "UDP-014"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "UDP-015": {
+      "vectors": [
+        "UDP-015"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9000,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-001": {
+      "vectors": [
+        "ICMP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 1,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-002": {
+      "vectors": [
+        "ICMP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 1,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-003": {
+      "vectors": [
+        "ICMP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-004": {
+      "vectors": [
+        "ICMP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-005": {
+      "vectors": [
+        "ICMP-005"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-006": {
+      "vectors": [
+        "ICMP-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 1,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-007": {
+      "vectors": [
+        "ICMP-007"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-008": {
+      "vectors": [
+        "ICMP-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-009": {
+      "vectors": [
+        "ICMP-009"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-010": {
+      "vectors": [
+        "ICMP-010"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-011": {
+      "vectors": [
+        "ICMP-011"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-012": {
+      "vectors": [
+        "ICMP-012"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-013": {
+      "vectors": [
+        "ICMP-013"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "ICMP-014": {
+      "vectors": [
+        "ICMP-014"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-001": {
+      "vectors": [
+        "IP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-002": {
+      "vectors": [
+        "IP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-003": {
+      "vectors": [
+        "IP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-004": {
+      "vectors": [
+        "IP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-005": {
+      "vectors": [
+        "IP-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-006": {
+      "vectors": [
+        "IP-006"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-007": {
+      "vectors": [
+        "IP-007"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-008": {
+      "vectors": [
+        "IP-008"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-009": {
+      "vectors": [
+        "IP-009"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-010": {
+      "vectors": [
+        "IP-010"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-011": {
+      "vectors": [
+        "IP-011"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-012": {
+      "vectors": [
+        "IP-012"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-013": {
+      "vectors": [
+        "IP-013"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-014": {
+      "vectors": [
+        "IP-014"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-015": {
+      "vectors": [
+        "IP-015"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-016": {
+      "vectors": [
+        "IP-016"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-017": {
+      "vectors": [
+        "IP-017"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-018": {
+      "vectors": [
+        "IP-018"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "::1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "IP-019": {
+      "vectors": [
+        "IP-019"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-001": {
+      "vectors": [
+        "DNS-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-002": {
+      "vectors": [
+        "DNS-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-003": {
+      "vectors": [
+        "DNS-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-004": {
+      "vectors": [
+        "DNS-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-005": {
+      "vectors": [
+        "DNS-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-006": {
+      "vectors": [
+        "DNS-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-007": {
+      "vectors": [
+        "DNS-007"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "missing.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-008": {
+      "vectors": [
+        "DNS-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "dnssec": {
+          "zone": "example",
+          "flags": 257,
+          "public_key_hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+        }
+      }
+    },
+    "DNS-009": {
+      "vectors": [
+        "DNS-009"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-010": {
+      "vectors": [
+        "DNS-010"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-011": {
+      "vectors": [
+        "DNS-011"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-012": {
+      "vectors": [
+        "DNS-012"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-013": {
+      "vectors": [
+        "DNS-013"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-014": {
+      "vectors": [
+        "DNS-014"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-015": {
+      "vectors": [
+        "DNS-015"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-016": {
+      "vectors": [
+        "DNS-016"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-017": {
+      "vectors": [
+        "DNS-017"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-018": {
+      "vectors": [
+        "DNS-018"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-019": {
+      "vectors": [
+        "DNS-019"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-020": {
+      "vectors": [
+        "DNS-020"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-021": {
+      "vectors": [
+        "DNS-021"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "DNS-022": {
+      "vectors": [
+        "DNS-022"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9053,
+        "server_name": "host.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-001": {
+      "vectors": [
+        "NTP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9123,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-002": {
+      "vectors": [
+        "NTP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9123,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-003": {
+      "vectors": [
+        "NTP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9123,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-004": {
+      "vectors": [
+        "NTP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9123,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-005": {
+      "vectors": [
+        "NTP-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9123,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-006": {
+      "vectors": [
+        "NTP-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9123,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-007": {
+      "vectors": [
+        "NTP-007"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "NTP-008": {
+      "vectors": [
+        "NTP-008"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-001": {
+      "vectors": [
+        "SIP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-002": {
+      "vectors": [
+        "SIP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "sip": {
+          "test_user": "isradar-fixture",
+          "dedicated_test_endpoint": true,
+          "expected_status": 420
+        }
+      }
+    },
+    "SIP-003": {
+      "vectors": [
+        "SIP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "sip": {
+          "test_user": "isradar-fixture",
+          "dedicated_test_endpoint": true,
+          "expected_status": 200
+        }
+      }
+    },
+    "SIP-004": {
+      "vectors": [
+        "SIP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-005": {
+      "vectors": [
+        "SIP-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-006": {
+      "vectors": [
+        "SIP-006"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-007": {
+      "vectors": [
+        "SIP-007"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-008": {
+      "vectors": [
+        "SIP-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9061,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "SIP-009": {
+      "vectors": [
+        "SIP-009"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-010": {
+      "vectors": [
+        "SIP-010"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SIP-011": {
+      "vectors": [
+        "SIP-011"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9060,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-001": {
+      "vectors": [
+        "HTTP-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-002": {
+      "vectors": [
+        "HTTP-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "isradar-test",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-003": {
+      "vectors": [
+        "HTTP-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-004": {
+      "vectors": [
+        "HTTP-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "isradar-test",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-005": {
+      "vectors": [
+        "HTTP-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "isradar-test",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-006": {
+      "vectors": [
+        "HTTP-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-007": {
+      "vectors": [
+        "HTTP-007"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-008": {
+      "vectors": [
+        "HTTP-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-009": {
+      "vectors": [
+        "HTTP-009"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-010": {
+      "vectors": [
+        "HTTP-010"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-011": {
+      "vectors": [
+        "HTTP-011"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9080,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-012": {
+      "vectors": [
+        "HTTP-012"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        },
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "HTTP-013": {
+      "vectors": [
+        "HTTP-013"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-014": {
+      "vectors": [
+        "HTTP-014"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-015": {
+      "vectors": [
+        "HTTP-015"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        },
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "HTTP-016": {
+      "vectors": [
+        "HTTP-016"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        },
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "HTTP-017": {
+      "vectors": [
+        "HTTP-017"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/redirect",
+          "body": "",
+          "headers": {},
+          "expected_status": 302,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-018": {
+      "vectors": [
+        "HTTP-018"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {
+            "x-isradar-test": "fixture"
+          },
+          "expected_status": 200,
+          "expected_headers": {
+            "x-isradar-test": "fixture"
+          },
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-019": {
+      "vectors": [
+        "HTTP-019"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/health",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-020": {
+      "vectors": [
+        "HTTP-020"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-021": {
+      "vectors": [
+        "HTTP-021"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-022": {
+      "vectors": [
+        "HTTP-022"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-023": {
+      "vectors": [
+        "HTTP-023"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-024": {
+      "vectors": [
+        "HTTP-024"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-025": {
+      "vectors": [
+        "HTTP-025"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-026": {
+      "vectors": [
+        "HTTP-026"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-027": {
+      "vectors": [
+        "HTTP-027"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-028": {
+      "vectors": [
+        "HTTP-028"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-029": {
+      "vectors": [
+        "HTTP-029"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-030": {
+      "vectors": [
+        "HTTP-030"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-031": {
+      "vectors": [
+        "HTTP-031"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-032": {
+      "vectors": [
+        "HTTP-032"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-033": {
+      "vectors": [
+        "HTTP-033"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-034": {
+      "vectors": [
+        "HTTP-034"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "HTTP-035": {
+      "vectors": [
+        "HTTP-035"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-036": {
+      "vectors": [
+        "HTTP-036"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "isradar-test",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-037": {
+      "vectors": [
+        "HTTP-037"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
+        }
+      }
+    },
+    "HTTP-038": {
+      "vectors": [
+        "HTTP-038"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/isradar-test",
+          "body": "isradar-test",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "TLS-001": {
+      "vectors": [
+        "TLS-001"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-002": {
+      "vectors": [
+        "TLS-002"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-003": {
+      "vectors": [
+        "TLS-003"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-004": {
+      "vectors": [
+        "TLS-004"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-005": {
+      "vectors": [
+        "TLS-005"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-006": {
+      "vectors": [
+        "TLS-006"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9444,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-007": {
+      "vectors": [
+        "TLS-007"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-008": {
+      "vectors": [
+        "TLS-008"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-009": {
+      "vectors": [
+        "TLS-009"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9445,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-010": {
+      "vectors": [
+        "TLS-010"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "other.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "TLS-011": {
+      "vectors": [
+        "TLS-011"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TLS-012": {
+      "vectors": [
+        "TLS-012"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TLS-013": {
+      "vectors": [
+        "TLS-013"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9443,
+        "server_name": "validator.example"
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "tls_ca": {
+          "file": "../../../tests/fixtures/tls/ca.der",
+          "sha256": "e4f58c0d95e743bd21917801053cbe0bd1673b58973201ea5d62838f152d917a"
+        }
+      }
+    },
+    "SPECIAL-001": {
+      "vectors": [
+        "SPECIAL-001"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-002": {
+      "vectors": [
+        "SPECIAL-002"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-003": {
+      "vectors": [
+        "SPECIAL-003"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-004": {
+      "vectors": [
+        "SPECIAL-004"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-005": {
+      "vectors": [
+        "SPECIAL-005"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-006": {
+      "vectors": [
+        "SPECIAL-006"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-007": {
+      "vectors": [
+        "SPECIAL-007"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-008": {
+      "vectors": [
+        "SPECIAL-008"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-009": {
+      "vectors": [
+        "SPECIAL-009"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "SPECIAL-010": {
+      "vectors": [
+        "SPECIAL-010"
+      ],
+      "mode": "lab_emulation",
+      "target": null,
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    }
+  }
+}
