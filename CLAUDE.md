@@ -6,7 +6,7 @@ ISRadar is a Rust sender for bounded network protocol validation across L3, L4, 
 
 Read [README.md](README.md) for usage, the [product specification](MazeBolt_DDoS_Trafik_Ajani_Promptu.md) for intended scope, and [docs/status.md](docs/status.md) for implementation and validation evidence. The specification's example directory tree is conceptual; the source map below describes the actual layout.
 
-The catalog has 183 entries: 33 L3, 48 L4, and 102 L7. It contains 128 bounded live checks and 55 offline entries (41 event models and 14 packet/protocol fixtures). L4 contains 41 live implementations and 7 offline models. `implemented` means code exists for the declared mode; it does not mean live-network verification, an independent attack implementation, or vendor parity. Offline entries have no live-network implementation.
+The catalog has 184 entries: 33 L3, 49 L4, and 102 L7. It contains 129 bounded live checks and 55 offline entries (41 event models and 14 packet/protocol fixtures). L4 contains 42 live implementations and 7 offline models. `implemented` means code exists for the declared mode; it does not mean live-network verification, an independent attack implementation, or vendor parity. Offline entries have no live-network implementation.
 
 ## Stack and source map
 

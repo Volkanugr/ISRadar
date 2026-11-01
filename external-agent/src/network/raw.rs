@@ -29,6 +29,7 @@ pub(crate) fn kind(vector: &Vector) -> Result<PacketKind> {
         Backend::RawTcpMss => PacketKind::TcpMss,
         Backend::RawTcpTimestamp => PacketKind::TcpTimestamp,
         Backend::RawTcpSack => PacketKind::TcpSack,
+        Backend::RawTcpSynFlood => PacketKind::TcpSynFlood,
         Backend::RawIpv4Header => PacketKind::Ipv4Udp,
         Backend::RawIpv4Fragments => PacketKind::Ipv4Fragments,
         Backend::RawIpv4Ttl => PacketKind::Ipv4Ttl,
@@ -90,6 +91,7 @@ pub(crate) async fn execute(
                 | PacketKind::TcpMss
                 | PacketKind::TcpTimestamp
                 | PacketKind::TcpSack
+                | PacketKind::TcpSynFlood
                 | PacketKind::IcmpUnreachable
                 | PacketKind::IcmpTimeExceeded
                 | PacketKind::IcmpParameter

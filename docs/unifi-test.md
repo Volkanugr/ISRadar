@@ -92,7 +92,7 @@ The Docker image removes the `ping` package's file capability/setuid bits; echo-
 
 The empty-array / `set -u` incompatibility in Mac's Bash 3.2 has been fixed. If an older run shows `ping_args[@]: unbound variable`, rerun the command with the updated script; it rebuilds the image and creates a new report directory. Previous reports are retained.
 
-## All 183 catalog entries: all-vectors
+## All 184 catalog entries: all-vectors
 
 ```sh
 bash scripts/docker-web-test.sh 212.252.162.17 online.solvitsoftware.com all-vectors
@@ -102,7 +102,7 @@ This option accounts for every ID and executes only live checks configurable wit
 
 | Status | Count | Behavior |
 | --- | ---: | --- |
-| Live-ready | 46 | 26 normal ICMP/TCP/UDP/HTTP/HTTPS/TLS checks: 100 probes/ID, target 10/second. Also 20 raw TCP flag/option samples on port 80: 16 samples/ID, 1/second |
+| Live-ready | 47 | 26 normal ICMP/TCP/UDP/HTTP/HTTPS/TLS checks: 100 probes/ID, target 10/second. Also 21 raw TCP flag/option/syn-flood samples on port 80: 16 samples/ID, 1/second |
 | Offline-ready | 55 | Each ID once through shared `offline-catalog.yaml`; Docker `--network none` |
 | Awaiting configuration | 82 | Missing service, different IP version, other raw packet conditions, or a special test requirement; not sent or counted as passed |
 
@@ -112,9 +112,9 @@ This option accounts for every ID and executes only live checks configurable wit
 python3 scripts/prepare_all_vectors.py --summarize reports/DOCKER_DIRECTORY
 ```
 
-`all-vectors` does not claim to send 183 live attacks. Knowing ports 80/443 does not provide DNS, NTP, SIP, UDP echo, special HTTP-method endpoints, or other raw-packet requirements. Remaining entries can run only after their requirements are configured. The table applies to a single IPv4 target; IPv6 has 26 live entries, 55 offline entries, and 102 pending entries. A probe can include multiple messages/connections for backends such as TLS resumption or HTTP reuse; 10 probes/second is not a wire packet count. `all-vectors` runs catalog vectors; the non-catalog `BlackSun` header variation belongs to `signature`/`hacker-web`/`full-test`.
+`all-vectors` does not claim to send 184 live attacks. Knowing ports 80/443 does not provide DNS, NTP, SIP, UDP echo, special HTTP-method endpoints, or other raw-packet requirements. Remaining entries can run only after their requirements are configured. The table applies to a single IPv4 target; IPv6 has 26 live entries, 55 offline entries, and 103 pending entries. A probe can include multiple messages/connections for backends such as TLS resumption or HTTP reuse; 10 probes/second is not a wire packet count. `all-vectors` runs catalog vectors; the non-catalog `BlackSun` header variation belongs to `signature`/`hacker-web`/`full-test`.
 
-Use `l4-test` to select only the L4 catalog and configure TCP echo/UDP services on separate ports. Coverage of all 48 IDs and commands are in the [L4 test guide](l4-test.md).
+Use `l4-test` to select only the L4 catalog and configure TCP echo/UDP services on separate ports. Coverage of all 49 IDs and commands are in the [L4 test guide](l4-test.md).
 
 ## Reading results
 

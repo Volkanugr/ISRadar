@@ -39,6 +39,7 @@ Live checks use configured targets and limits. Offline models/fixtures do not tr
 | TCP-031 | L4 | TCP FIN Flood | lab_emulation | `offline_model` |
 | TCP-032 | L4 | TCP state exhaustion | lab_emulation | `offline_model` |
 | TCP-033 | L4 | Bounded live TCP session-occupancy workload | live_validation | `tcp_session` |
+| TCP-034 | L4 | TCP SYN Flood live half-open sample | live_validation | `raw_tcp_syn_flood` |
 | UDP-001 | L4 | UDP echo service reachability and response | live_validation | `udp_echo` |
 | UDP-002 | L4 | UDP closed-port response observation | live_validation | `udp_closed_port` |
 | UDP-003 | L4 | UDP fixed 128-byte payload echo | live_validation | `udp_echo128` |

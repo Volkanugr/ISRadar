@@ -17,6 +17,7 @@ pub enum Backend {
     RawTcpMss,
     RawTcpTimestamp,
     RawTcpSack,
+    RawTcpSynFlood,
     RawIpv4Header,
     RawIpv4Fragments,
     RawIpv4Ttl,
@@ -104,6 +105,7 @@ impl Backend {
                 | Self::RawTcpMss
                 | Self::RawTcpTimestamp
                 | Self::RawTcpSack
+                | Self::RawTcpSynFlood
                 | Self::RawIpv4Header
                 | Self::RawIpv4Fragments
                 | Self::RawIpv4Ttl

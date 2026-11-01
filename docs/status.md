@@ -1,10 +1,10 @@
 # Implementation and validation status
 
-The scope is the **L3/L4/L7 sender agent** in the source specification. All 183 catalog entries map to executable source code: **128 bounded live checks, 41 offline event models, and 14 offline fixtures**. No `catalog_only` entries remain. `implemented` means source code exists; `verified` means validation is complete. Entries in this version are `implemented`, while vendor parity remains `unverified`.
+The scope is the **L3/L4/L7 sender agent** in the source specification. All 184 catalog entries map to executable source code: **129 bounded live checks, 41 offline event models, and 14 offline fixtures**. No `catalog_only` entries remain. `implemented` means source code exists; `verified` means validation is complete. Entries in this version are `implemented`, while vendor parity remains `unverified`.
 
 The 55 offline entries have no live-network implementation. Their `implemented` status refers to model/fixture code; it would be incorrect to count them as implemented live attacks or tests performed against a target firewall.
 
-The current source passed `bash scripts/verify.sh` on macOS with loopback socket access: **78 Rust tests** (including the ignored-by-default 1,000-datagram test), **12 Python tests**, and **21 wire tests**, plus build, format/generated-file checks, and Clippy. `check_wire.py` runs a dependency-free subset of the same Rust source; its 21 tests are not additional independent coverage. Profile tests check 38 raw entries against the expected Linux platform requirement and use normal engine validation for the remaining entries; no raw packets are sent. Linux raw runtime behavior and live libpcap capture remain unverified.
+The current source passed `bash scripts/verify.sh` on macOS with loopback socket access: **78 Rust tests** (including the ignored-by-default 1,000-datagram test), **12 Python tests**, and **21 wire tests**, plus build, format/generated-file checks, and Clippy. `check_wire.py` runs a dependency-free subset of the same Rust source; its 21 tests are not additional independent coverage. Profile tests check 39 raw entries against the expected Linux platform requirement and use normal engine validation for the remaining entries; no raw packets are sent. Linux raw runtime behavior and live libpcap capture remain unverified.
 
 [Each ID's name, layer, mode, and backend mapping](vector-coverage.md) is generated alongside the catalog.
 
@@ -61,7 +61,7 @@ An HTTP probe identity header, a list of admitted identities retained across err
 
 | Family | Live | Offline | Implementation |
 | --- | ---: | ---: | --- |
-| TCP | 28 | 5 | Connect/close, timeout, echo, two-message session, half-close/EOF, bounded session workload; all listed flag combinations and raw window/MSS/timestamp/SACK samples |
+| TCP | 29 | 5 | Connect/close, timeout, echo, two-message session, half-close/EOF, bounded session workload; all listed flag combinations and raw window/MSS/timestamp/SACK and SYN-flood half-open samples |
 | UDP | 13 | 2 | Echo to a connected peer; 0/64/128/1200 bytes, fixed/random payloads, closed-port classification, valid fragments, HMAC sequenced sender, bounded datagram workload |
 | ICMP | 7 | 7 | Echo; Destination Unreachable, Time Exceeded, Parameter Problem, timestamp samples; MTU/redirect/quote checks offline |
 | IP | 13 | 6 | IPv4 checksum/TTL/ECN/options/fragments; IPv6 reachability, Hop-by-Hop/Destination/SRH/fragments/No Next Header; malformed/overlap/tiny-fragment offline |
@@ -71,9 +71,9 @@ An HTTP probe identity header, a list of admitted identities retained across err
 | HTTP/HTTPS | 24 | 14 | GET/POST/HEAD/PUT/PATCH/DELETE/OPTIONS/TRACE/CONNECT; HTTP/1.1/2/3; keep-alive/reuse, certificates, status, redirects, headers, health, bounded GET/POST/partial-header/slow-body workloads |
 | TLS | 11 | 2 | 1.2/1.3 and bounded negotiation workload, certificate/hostname, secure cipher observation, ALPN, actual session resumption, version/expired/name-mismatch rejections |
 | Specialized | 0 | 10 | Multi-vector, distribution, low-rate/long occupancy, volume, synthetic request/reply ratio, IKEv2 SA_INIT, SMTP HELO, correlation/transition/recovery |
-| Total | **128** | **55** | **183** |
+| Total | **129** | **55** | **184** |
 
-Multiple entries use the same protocol implementation with different policy/transport conditions. The 183 entries are not 183 different attack tools or an exact copy of MazeBolt's private list.
+Multiple entries use the same protocol implementation with different policy/transport conditions. The 184 entries are not 184 different attack tools or an exact copy of MazeBolt's private list.
 
 ## Protocol details and limitations
 
@@ -103,7 +103,7 @@ The initial validation of that fix passed three mock-Docker regression tests on 
 
 ### SYN/SYN-ACK and offline Slowloris profile integration
 
-Existing `TCP-002/003` raw backends were connected to separate IPv4 `full-test` steps on ports 80 and 443, each limited to 16 samples, 1/second, and one worker. The existing `HTTP-025` offline model runs once without a target and with Docker networking disabled. IPv4 full-test therefore has 16 steps. For IPv6, the four IPv4 raw steps are skipped with reasons, leaving 12 steps. All 20 raw TCP entries were added to the IPv4 `all-vectors` plan on port 80: the current plan has 46 live-ready, 55 offline, and 82 pending entries. IPv6 counts are 26/55/102.
+Existing `TCP-002/003` raw backends were connected to separate IPv4 `full-test` steps on ports 80 and 443, each limited to 16 samples, 1/second, and one worker. The existing `HTTP-025` offline model runs once without a target and with Docker networking disabled. IPv4 full-test therefore has 16 steps. For IPv6, the four IPv4 raw steps are skipped with reasons, leaving 12 steps. All 21 raw TCP entries were added to the IPv4 `all-vectors` plan on port 80: the current plan has 47 live-ready, 55 offline, and 82 pending entries. IPv6 counts are 26/55/103.
 
 Raw containers use only the `NET_RAW` capability and a read-only data mount; the host user writes the actual JSON report received over stdout. Other steps run without capabilities. Terminal/file summaries show the mode and raw socket acceptance count; offline steps are explicitly labeled `not tested: offline`.
 
@@ -111,11 +111,11 @@ Mock-Docker flow tests check that raw capabilities do not leak to other steps, o
 
 ### Planning every L4 entry
 
-The `l4` CLI preset generates 48 YAML files: 41 live implementations and 7 offline models. The `l4-test` Docker plan accounts for every ID; its default IPv4 TCP target has 23 live / 7 offline / 18 pending entries. With TCP echo and UDP ports configured, IPv4 has 39 live / 7 offline / 2 awaiting IPv6; IPv6 has 17 live / 7 offline / 24 awaiting IPv4. UDP-005 produces two fragments per probe and is therefore limited to 8 probes. UDP-010 gets a fresh measurement key with 0600 permissions and does not wait for ACKs. Missing services are not automatically directed to web ports.
+The `l4` CLI preset generates 49 YAML files: 42 live implementations and 7 offline models. The `l4-test` Docker plan accounts for every ID; its default IPv4 TCP target has 24 live / 7 offline / 18 pending entries. With TCP echo and UDP ports configured, IPv4 has 40 live / 7 offline / 2 awaiting IPv6; IPv6 has 17 live / 7 offline / 25 awaiting IPv4. UDP-005 produces two fragments per probe and is therefore limited to 8 probes. UDP-010 gets a fresh measurement key with 0600 permissions and does not wait for ACKs. Missing services are not automatically directed to web ports.
 
-Validation: 30 Rust library tests and 5 profile tests passed; profile tests cover every L4 ID and actual model execution for all 55 offline entries. Two Python L4 plan tests cover the union of 41 live IDs across IPv4/IPv6, port mappings, the fragment budget, and measurement identity renewal. Seven mock-Docker flow tests (baseline, IPv4/IPv6 full-test, IPv4/IPv6 all-vectors, and default/fully configured L4 plans), formatting, shell syntax, static consistency, and Clippy `-D warnings` passed. Details and commands are in the [L4 guide](l4-test.md). Live Linux/Docker L4 acceptance testing remains incomplete.
+Validation: 30 Rust library tests and 5 profile tests passed; profile tests cover every L4 ID and actual model execution for all 55 offline entries. Two Python L4 plan tests cover the union of 42 live IDs across IPv4/IPv6, port mappings, the fragment budget, and measurement identity renewal. Seven mock-Docker flow tests (baseline, IPv4/IPv6 full-test, IPv4/IPv6 all-vectors, and default/fully configured L4 plans), formatting, shell syntax, static consistency, and Clippy `-D warnings` passed. Details and commands are in the [L4 guide](l4-test.md). Live Linux/Docker L4 acceptance testing remains incomplete.
 
-Generated IPv4/IPv6 web/catalog/L4 YAML files were checked with the actual macOS agent: 106 normal/offline configurations validated, while 46 raw configurations were rejected with the expected Linux requirement. The CLI `l4` preset produced 46 YAML files. The new Slowloris profile's 1 observation and L4 model profile's 7 observations completed in actual offline engine runs with zero network counters. These checks sent no traffic to a remote target.
+Generated IPv4/IPv6 web/catalog/L4 YAML files were checked with the actual macOS agent: 107 normal/offline configurations validated, while 47 raw configurations were rejected with the expected Linux requirement. The CLI `l4` preset produced 49 YAML files. The new Slowloris profile's 1 observation and L4 model profile's 7 observations completed in actual offline engine runs with zero network counters. These checks sent no traffic to a remote target.
 
 Initial Docker HTTP/HTTPS and 100-request / 10-probes-per-second results appear above. Live runtime validation of `full-test`, `all-vectors`, HTTP identity correlation, and UniFi event matching remains pending. Clippy `-D warnings` passed on the latest code. [Test scope and usage](unifi-test.md).
 

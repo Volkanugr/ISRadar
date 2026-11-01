@@ -40,6 +40,7 @@ ROWS = {
         ("TCP SYN Flood", "M"), ("TCP ACK Flood", "M"), ("TCP RST Flood", "M"),
         ("TCP FIN Flood", "M"), ("TCP state exhaustion", "M"),
         ("Bounded live TCP session-occupancy workload", "tcp_session"),
+        ("TCP SYN Flood live half-open sample", "raw_tcp_syn_flood", 4),
     ],
     "UDP": [
         ("UDP echo service reachability and response", "udp_echo"),
@@ -205,6 +206,8 @@ def entries():
                 tests += ["raw_sample_admission_is_stricter_than_normal_traffic"]
                 if backend == "raw_tcp_flags":
                     tests += ["all_tcp_flag_samples_have_valid_headers_and_checksums"]
+                elif backend == "raw_tcp_syn_flood":
+                    tests += ["syn_flood_sample_is_a_bounded_raw_syn_burst"]
                 elif backend.startswith("raw_ipv6_"):
                     tests += ["ipv6_extensions_and_fragments_keep_the_authorized_destination"]
                 elif backend == "raw_ipv4_fragments":

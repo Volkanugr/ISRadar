@@ -9,6 +9,7 @@ pub enum PacketKind {
     TcpMss,
     TcpTimestamp,
     TcpSack,
+    TcpSynFlood,
     Ipv4Udp,
     Ipv4Fragments,
     Ipv4Ttl,
@@ -145,7 +146,8 @@ pub fn build(
                 | PacketKind::TcpWindow
                 | PacketKind::TcpMss
                 | PacketKind::TcpTimestamp
-                | PacketKind::TcpSack => {
+                | PacketKind::TcpSack
+                | PacketKind::TcpSynFlood => {
                     let flags = if let PacketKind::TcpFlags(flags) = kind {
                         flags
                     } else {
@@ -388,6 +390,34 @@ mod tests {
                 unreachable!()
             };
             assert_eq!(checksum(&pseudo_v4(a, b, 6, &p[20..])), 0);
+        }
+    }
+    #[test]
+    fn syn_flood_sample_is_a_bounded_raw_syn_burst() {
+        let (a, b) = addresses();
+        // A single half-open entry per sample: one pure SYN per freshly reserved source port.
+        // No ACK/RST payload, no options, no downstream delivery or capacity claim.
+        for source_port in [40000u16, 40001, 40002] {
+            let packets = build(
+                PacketKind::TcpSynFlood,
+                a,
+                b,
+                source_port,
+                80,
+                42,
+                b"isradar-syn-flood",
+            )
+            .unwrap();
+            assert_eq!(packets.len(), 1);
+            let p = &packets[0];
+            assert_eq!(p[9], 6); // IPv4 protocol = TCP
+            assert_eq!(p[33], 2); // pure SYN flag, no ACK or other control bits
+            assert_eq!((p[32] >> 4) as usize * 4, 20); // 5-word header, no options
+            assert_eq!(checksum(&p[..20]), 0);
+            let (IpAddr::V4(source), IpAddr::V4(target)) = (a, b) else {
+                unreachable!()
+            };
+            assert_eq!(checksum(&pseudo_v4(source, target, 6, &p[20..])), 0);
         }
     }
     #[test]

@@ -135,6 +135,7 @@
       "TCP-031",
       "TCP-032",
       "TCP-033",
+      "TCP-034",
       "UDP-001",
       "UDP-002",
       "UDP-003",
@@ -386,6 +387,7 @@
       "TCP-031",
       "TCP-032",
       "TCP-033",
+      "TCP-034",
       "UDP-001",
       "UDP-002",
       "UDP-003",
@@ -1232,6 +1234,32 @@
         "concurrency": 1,
         "bandwidth_bytes_per_second": 8192,
         "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      }
+    },
+    "TCP-034": {
+      "vectors": [
+        "TCP-034"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9001,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 1,
         "timeout_ms": 2000
       },
       "kill_switch": "STOP",

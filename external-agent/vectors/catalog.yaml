@@ -595,6 +595,24 @@ vectors:
     automated_tests: ["catalog_integrity", "backend_contracts", "bounded_live_variants_execute_real_protocol_exchanges", "additional_protocol_transports"]
     vendor_parity: "unverified"
     ip_version: null
+  - id: "TCP-034"
+    name: "TCP SYN Flood live half-open sample"
+    family: "TCP"
+    category: "tcp"
+    layer: "L4"
+    protocol: "TCP"
+    mode: "live_validation"
+    risk: "low"
+    enabled: true
+    requires_lab: false
+    implementation_status: "implemented"
+    backend: "raw_tcp_syn_flood"
+    description: "Linux low-volume raw packet sample. Execution requires an explicit target, an OS-owned source address and a fresh reserved source port. At most 1 probe/second, one worker, 16 total IP samples and 60 seconds. Existing TCP connections are never targeted; no spoofing, reflection or delivery inference."
+    references: ["https://www.rfc-editor.org/rfc/rfc9293"]
+    supported_parameters: ["target", "limits"]
+    automated_tests: ["catalog_integrity", "backend_contracts", "raw_sample_admission_is_stricter_than_normal_traffic", "syn_flood_sample_is_a_bounded_raw_syn_burst"]
+    vendor_parity: "unverified"
+    ip_version: 4
   - id: "UDP-001"
     name: "UDP echo service reachability and response"
     family: "UDP"

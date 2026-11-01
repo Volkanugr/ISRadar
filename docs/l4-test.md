@@ -1,13 +1,13 @@
 # L4 catalog and batch execution
 
-The L4 catalog contains **48 entries**: **41 live protocol implementations** and **7 offline event models**. The live implementations comprise 22 raw samples and 19 socket/protocol checks. Every L4 entry has source code; the seven models have no live attack implementation. Acceptance testing of all live paths on Linux/Docker remains incomplete.
+The L4 catalog contains **49 entries**: **42 live protocol implementations** and **7 offline event models**. The live implementations comprise 23 raw samples and 19 socket/protocol checks. Every L4 entry has source code; the seven models have no live attack implementation. Acceptance testing of all live paths on Linux/Docker remains incomplete.
 
 | Entries | Implementation | Execution requirements |
 | --- | --- | --- |
 | TCP-001, 016, 022, 023 | Connect/close, timeout classification, IPv4/IPv6 reachability | TCP port and an IP version matching the entry |
 | TCP-002–015, 020–021 | SYN, SYN-ACK, ACK, RST, FIN, PSH, URG, and flag combinations | IPv4, Linux, NET_RAW; a newly reserved source port |
 | TCP-017–019, 033 | Half-close/EOF, echo, two messages on one connection, and bounded session occupancy | TCP echo service |
-| TCP-024–027 | Window, MSS, timestamp, SACK options | IPv4, Linux, NET_RAW |
+| TCP-024–027, 034 | Window, MSS, timestamp, SACK options and a bounded SYN-flood half-open sample | IPv4, Linux, NET_RAW |
 | TCP-028–032 | SYN/ACK/RST/FIN flood and state exhaustion | Offline event models only |
 | UDP-001, 003–004, 006–009, 012, 015 | Echo, 0/64/128/1200 bytes, IPv4/IPv6, connected-peer validation, and bounded random-datagram workload | UDP echo service |
 | UDP-002 | Observe the OS response for a closed UDP port | A separate UDP port known to be closed |
@@ -24,7 +24,7 @@ cargo build --release --workspace --locked
 ./target/release/external-agent profiles create --preset l4 --directory profiles/l4
 ```
 
-This command creates a separate YAML file for each of the 48 entries and a new measurement key/identity for UDP-010; it sends no traffic. Examples start with loopback addresses. Executing raw samples requires Linux and NET_RAW. Inspect individual entries with commands such as `vectors info TCP-002`.
+This command creates a separate YAML file for each of the 49 entries and a new measurement key/identity for UDP-010; it sends no traffic. Examples start with loopback addresses. Executing raw samples requires Linux and NET_RAW. Inspect individual entries with commands such as `vectors info TCP-002`.
 
 ## L4 plan in Docker
 
@@ -53,7 +53,7 @@ bash scripts/docker-web-test.sh TARGET_IP test.example.com l4-test
 
 The TCP echo service must return the sent bytes unchanged, support two messages on the same connection, and return EOF after the final echo when the client shuts down its write half. UDP echo must return 0–1200 bytes unchanged. The port specified for UDP-002 must be closed. UDP-010 sends without waiting for a receiver; it cannot measure loss/delivery counts alone. A measurement key is generated in the new run directory with `0600` permissions; it is not an operator approval key.
 
-With all these ports configured, the IPv4 plan contains **39 live + 7 offline + 2 awaiting an IPv6 target**. The same ports with an IPv6 target produce **17 live + 7 offline + 24 awaiting an IPv4 target**. Combining the plans for both IP versions covers all 41 live entry paths; this does not mean the tests have executed successfully.
+With all these ports configured, the IPv4 plan contains **40 live + 7 offline + 2 awaiting an IPv6 target**. The same ports with an IPv6 target produce **17 live + 7 offline + 25 awaiting an IPv4 target**. Combining the plans for both IP versions covers all 42 live entry paths; this does not mean the tests have executed successfully.
 
 You can also generate a plan without running Docker:
 
@@ -67,7 +67,7 @@ python3 scripts/prepare_l4_test.py --target-ip TARGET_IP --directory l4-plan \
 
 Normal live steps use 100 probes, a target rate of 10/second, and at most 8 workers. Raw steps are limited to 1 probe/second, one worker, and at most 16 IP packets total. UDP-005 sends two fragments per probe, so it uses 8 probes. These budgets apply per step; the health threshold or STOP can end a step earlier.
 
-`configs/index.json` records the mode, status, target, and pending reason for all 48 IDs. `catalog-results.json` matches each ID to its actual report. `live_completed` means execution completed; it does not mean the traffic traversed the firewall. Missing services are not counted as tested or successful.
+`configs/index.json` records the mode, status, target, and pending reason for all 49 IDs. `catalog-results.json` matches each ID to its actual report. `live_completed` means execution completed; it does not mean the traffic traversed the firewall. Missing services are not counted as tested or successful.
 
 `sent` and `raw_ip_packets_accepted` mean the local socket accepted the packet. A SYN-ACK sample is a standalone SYN-ACK packet, not a measurement of the response to a SYN. To verify target delivery, inspect target packet captures together with the source/destination tuple and packet identifier in the report; NAT can change the source address/port. Attributing blocking to UniFi also requires a matching UniFi record. Offline models produce none of this evidence.
 

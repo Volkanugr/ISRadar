@@ -76,7 +76,9 @@ fn catalog_cannot_enable_unimplemented_or_offline_as_live() {
 
 #[test]
 fn raw_sample_admission_is_stricter_than_normal_traffic() {
-    for id in ["TCP-002", "TCP-024", "IP-002", "IP-015", "ICMP-003"] {
+    for id in [
+        "TCP-002", "TCP-024", "IP-002", "IP-015", "ICMP-003", "TCP-034",
+    ] {
         let (_dir, config) = support::configured(
             support::target("127.0.0.1:9000".parse().unwrap()),
             &[id],

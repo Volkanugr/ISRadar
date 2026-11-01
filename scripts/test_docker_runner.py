@@ -144,15 +144,15 @@ class RunnerTests(unittest.TestCase):
                 self.assertIn("Atlandı: l4-syn-80", result.stderr)
             if scenario == "all-vectors":
                 catalog = json.loads((directory / "catalog-results.json").read_text())
-                self.assertEqual(catalog["catalog_vectors"], 183)
+                self.assertEqual(catalog["catalog_vectors"], 184)
                 for entry in catalog["vectors"]:
                     if entry["id"] in {"TCP-002", "TCP-003"}:
                         self.assertEqual(entry["status"], "live_completed" if ":" not in ip else "needs_configuration")
             if scenario == "l4-test":
                 catalog = json.loads((directory / "catalog-results.json").read_text())
-                self.assertEqual(catalog["catalog_vectors"], 48)
+                self.assertEqual(catalog["catalog_vectors"], 49)
                 self.assertEqual(catalog["counts"]["offline_completed"], 7)
-                self.assertEqual(catalog["counts"]["live_completed"], 39 if ports else 23)
+                self.assertEqual(catalog["counts"]["live_completed"], 40 if ports else 24)
                 self.assertEqual(catalog["counts"]["needs_configuration"], 2 if ports else 18)
             return names
 
@@ -175,7 +175,7 @@ class RunnerTests(unittest.TestCase):
     def test_catalog_starts_offline_and_reaches_live_cases(self):
         cases = self.run_scenario("all-vectors")
         self.assertEqual(cases[0], "offline-catalog")
-        self.assertEqual(len(cases), 47)
+        self.assertEqual(len(cases), 48)
         self.assertIn("ICMP-001", cases)
         self.assertIn("TCP-001", cases)
         self.assertIn("TCP-002", cases)
@@ -189,7 +189,7 @@ class RunnerTests(unittest.TestCase):
 
     def test_l4_default_does_not_guess_udp_or_echo_services(self):
         cases = self.run_scenario("l4-test")
-        self.assertEqual(len(cases), 24)
+        self.assertEqual(len(cases), 25)
         self.assertEqual(cases[0], "offline-l4")
         self.assertIn("TCP-027", cases)
         self.assertNotIn("TCP-017", cases)
@@ -201,7 +201,7 @@ class RunnerTests(unittest.TestCase):
             "ISRADAR_UDP_PORT": "9000", "ISRADAR_UDP_CLOSED_PORT": "9004",
             "ISRADAR_UDP_MEASUREMENT_PORT": "9005",
         })
-        self.assertEqual(len(cases), 40)
+        self.assertEqual(len(cases), 41)
         self.assertIn("TCP-017", cases)
         self.assertIn("UDP-005", cases)
         self.assertIn("UDP-010", cases)

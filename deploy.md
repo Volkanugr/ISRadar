@@ -79,7 +79,7 @@ external-agent profiles create --preset researcher --directory profiles/research
 external-agent run --config profiles/researcher/HTTP-001.yaml --output report-001.json
 ```
 
-Available sets are `basic`, `sophisticated`, `researcher`, `hacker`, and `l4`. `researcher` generates YAML for all 183 entries; `l4` covers all 48 L4 entries. Advanced protocols need suitable services; the [profile guide](docs/profiles.md) describes default ports and expectations.
+Available sets are `basic`, `sophisticated`, `researcher`, `hacker`, and `l4`. `researcher` generates YAML for all 184 entries; `l4` covers all 49 L4 entries. Advanced protocols need suitable services; the [profile guide](docs/profiles.md) describes default ports and expectations.
 
 For a real test, edit `target.ip`, `port`, and, where needed, `server_name` and `protocol` in the selected YAML. No separate operator approval, signature, authorization key, or authorization file is required:
 
@@ -203,9 +203,9 @@ Replace placeholders with your target. The first command targets 100 HTTP GETs f
 
 IPv4 `full-test` runs 16 steps: 11 normal live steps (ICMP, TCP 80/443, eight web steps), four SYN/SYN-ACK sample steps (80/443), and one offline Slowloris model. Normal steps target at most 1,100 probes total; raw steps target 64 packet samples total. Each raw step is limited to 16 samples, 1/second, and one worker. On IPv6 targets, IPv4 raw entries are skipped with explicit reasons, leaving 12 steps.
 
-`all-vectors` accounts for all 183 catalog IDs: for IPv4, 46 live checks (26 normal + 20 raw TCP) and 55 offline entries can run; the other 82 await configuration. IPv6 counts are 26/55/102. Raw TCP samples in this set target port 80; use `full-test` for SYN/SYN-ACK on both ports. Pending reasons are in `configs/index.json`, and results are in `catalog-results.json`. Offline steps use `--network none`. ICMP ping group permissions are set only inside the container's network namespace.
+`all-vectors` accounts for all 184 catalog IDs: for IPv4, 47 live checks (26 normal + 21 raw TCP) and 55 offline entries can run; the other 82 await configuration. IPv6 counts are 26/55/103. Raw TCP samples in this set target port 80; use `full-test` for SYN/SYN-ACK on both ports. Pending reasons are in `configs/index.json`, and results are in `catalog-results.json`. Offline steps use `--network none`. ICMP ping group permissions are set only inside the container's network namespace.
 
-`l4-test` accounts for all 48 L4 IDs; TCP flag/option samples and connection checks default to port 80. TCP echo/UDP checks accept separate service ports. A fully configured IPv4 plan has 39 live entries, 7 offline entries, and 2 awaiting an IPv6 target. [L4 usage guide](docs/l4-test.md).
+`l4-test` accounts for all 49 L4 IDs; TCP flag/option samples and connection checks default to port 80. TCP echo/UDP checks accept separate service ports. A fully configured IPv4 plan has 40 live entries, 7 offline entries, and 2 awaiting an IPv6 target. [L4 usage guide](docs/l4-test.md).
 
 Raw steps run as container UID 0 with only the `NET_RAW` capability; the configuration directory is read-only, and the report is generated in temporary memory and transferred to a file owned by the host user. Other steps use the host UID/GID and `--cap-drop ALL`. `--privileged` is unnecessary. `sent`/`raw_ip_packets_accepted` mean local socket acceptance; target delivery requires a target packet capture. Slowloris is only an offline model here.
 

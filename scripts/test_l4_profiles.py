@@ -20,11 +20,11 @@ class L4Profiles(unittest.TestCase):
             for version, ip in [(4, "198.51.100.10"), (6, "2001:db8::10")]:
                 directory = Path(temporary) / f"v{version}"
                 counts = prepare(ip, directory, ports)
-                self.assertEqual(counts, {"live_ready": 39 if version == 4 else 17,
-                                         "offline_ready": 7, "needs_configuration": 2 if version == 4 else 24})
+                self.assertEqual(counts, {"live_ready": 40 if version == 4 else 17,
+                                         "offline_ready": 7, "needs_configuration": 2 if version == 4 else 25})
                 manifest = json.loads((directory / "index.json").read_text())
                 self.assertEqual({entry["id"] for entry in manifest["catalog"]}, rows.keys())
-                self.assertEqual(len(manifest["catalog"]), 48)
+                self.assertEqual(len(manifest["catalog"]), 49)
                 for name, case in manifest["cases"].items():
                     source = (directory / f"{name}.yaml").read_text()
                     if case["mode"] == "lab_emulation":
@@ -60,7 +60,7 @@ class L4Profiles(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             directory = Path(temporary) / "default"
             counts = prepare("198.51.100.10", directory, {"tcp": 80})
-            self.assertEqual(counts, {"live_ready": 23, "offline_ready": 7, "needs_configuration": 18})
+            self.assertEqual(counts, {"live_ready": 24, "offline_ready": 7, "needs_configuration": 18})
             manifest = json.loads((directory / "index.json").read_text())
             for entry in manifest["catalog"]:
                 if entry["status"] == "needs_configuration":

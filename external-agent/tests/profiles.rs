@@ -43,7 +43,7 @@ fn l4_preset_has_every_transport_case_and_no_application_or_ip_cases() {
         }
     }
     assert_eq!(actual, expected);
-    assert_eq!((live, offline), (41, 7));
+    assert_eq!((live, offline), (42, 7));
     assert!(destination.join("measurement.key").is_file());
 }
 

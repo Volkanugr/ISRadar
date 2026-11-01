@@ -11,17 +11,17 @@ Creating a set only writes files. Each YAML in these sets runs one vector; inspe
 | --- | ---: | --- |
 | `basic` | 6 | TCP-001, UDP-001/010, HTTP-001/003/007 |
 | `sophisticated` | 90 | All non-raw live checks: HTTP/1.1/2/3, TLS, DNS, NTP, SIP, and session variants |
-| `researcher` | 183 | Every catalog entry, including Linux raw samples and offline scenarios |
+| `researcher` | 184 | Every catalog entry, including Linux raw samples and offline scenarios |
 | `hacker` | 64 | 55 offline event/malformed-packet scenarios; closed UDP port, NXDOMAIN, SIP policy, CONNECT/redirect, and negative TLS checks |
-| `l4` | 48 | All L4 entries: 41 live TCP/UDP implementations and 7 offline models |
+| `l4` | 49 | All L4 entries: 42 live TCP/UDP implementations and 7 offline models |
 
 Set names select coverage; they do not increase rates or quotas. Normal files use 1 probe/second, one worker, and 3 probes; raw/INVITE/CONNECT and offline files use 1 probe. Each file runs for at most 15 seconds. For the 1,000-datagram UDP example, use `delivery.yaml` created by `external-agent demo --directory local-demo`.
 
 For a real server on ports 80/443, `prepare_web_test.py` generates eight web YAML files, three ICMP/TCP files, four SYN/SYN-ACK files for IPv4 targets, and one offline Slowloris file. Select `baseline`, `signature`, `hacker-web`, or `full-test` in the Docker script. Normal live steps use 100 probes at a target rate of 10 probes/second; raw steps use at most 16 samples, 1 probe/second, and one worker. The Slowloris model runs once without networking. `hacker-web` has eight web steps; IPv4 `full-test` has 16 steps. For IPv6, the four IPv4 raw entries are skipped with reasons, leaving 12 steps. These scenarios differ from the CLI's 64-entry `hacker` preset.
 
-`all-vectors` uses `prepare_all_vectors.py` to account for all 183 entries: an IPv4 web target has 46 live-ready entries (26 normal + 20 raw TCP), 55 offline entries, and 82 entries awaiting configuration. The IPv6 counts are 26/55/102. Pending entries are neither sent nor counted as passed. [Docker-based UniFi testing](unifi-test.md).
+`all-vectors` uses `prepare_all_vectors.py` to account for all 184 entries: an IPv4 web target has 47 live-ready entries (26 normal + 21 raw TCP), 55 offline entries, and 82 entries awaiting configuration. The IPv6 counts are 26/55/103. Pending entries are neither sent nor counted as passed. [Docker-based UniFi testing](unifi-test.md).
 
-`l4-test` separately accounts for all 48 L4 entries. With the default IPv4 TCP port 80 target, it has 23 live entries, 7 offline entries, and 18 awaiting configuration. Supplying TCP echo and UDP service ports prepares 39 live IPv4 entries; two IPv6 entries remain pending. [L4 port configuration and scope](l4-test.md).
+`l4-test` separately accounts for all 49 L4 entries. With the default IPv4 TCP port 80 target, it has 24 live entries, 7 offline entries, and 18 awaiting configuration. Supplying TCP echo and UDP service ports prepares 40 live IPv4 entries; two IPv6 entries remain pending. [L4 port configuration and scope](l4-test.md).
 
 ## All 55 offline entries
 
@@ -74,7 +74,7 @@ external-agent profiles create --preset hacker --directory profiles/hacker
 external-agent run --config profiles/hacker/HTTP-025.yaml --output slow-model.json
 ```
 
-`HTTP-025` is an offline slot-occupancy model; it does not send Slowloris traffic to a target. Offline files need no network service. The source also includes [183 YAML files](../external-agent/vectors/profiles/cases). Use `profiles create` for UDP-010 so a fresh measurement key and run_id are generated.
+`HTTP-025` is an offline slot-occupancy model; it does not send Slowloris traffic to a target. Offline files need no network service. The source also includes [184 YAML files](../external-agent/vectors/profiles/cases). Use `profiles create` for UDP-010 so a fresh measurement key and run_id are generated.
 
 To run the basic set sequentially once the basic services are ready:
 
