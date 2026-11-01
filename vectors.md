@@ -220,6 +220,8 @@ cargo build --locked -p external-agent
 
 The set contains one YAML per vector and an `index.json` listing all files. Each case preserves its own execution mode and service settings; live and offline checks cannot share one engine plan. Creation sends no traffic. Configure the appropriate services before execution. See the [profile guide](docs/profiles.md#high-importance-vectors) for details.
 
+For Bash/Docker execution, use `bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority`. The [High-priority test guide](docs/high-priority-test.md) explains endpoint configuration and how the runner accounts for every High ID, including entries awaiting a service.
+
 ## Vector reference
 
 Every catalog ID appears once below. **Importance** is the proposed scenario importance, not proof of a finding. **Evidence** identifies the basis required for interpretation:

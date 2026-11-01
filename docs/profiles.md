@@ -38,6 +38,14 @@ Review the targets and protocol expectations before running individual files. Th
 
 Membership is generated from the importance column in `vectors.md`. After changing ratings, regenerate with `python3 scripts/generate_profiles.py` and rebuild the agent. Existing generated profile directories are not updated; create a new directory for the refreshed set.
 
+To run the High-only set through Bash/Docker with a fresh target-specific plan:
+
+```sh
+bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority
+```
+
+The default IPv4 web plan runs 13 live checks and 47 offline entries; the other 20 IDs remain pending until their services are configured. The [High-priority test guide](high-priority-test.md) describes configuring all 33 live entries, reports, and STOP behavior.
+
 ## All 55 offline entries
 
 [lab.yaml](../external-agent/vectors/profiles/lab.yaml) selects all 41 event models and 14 byte/protocol fixtures in one run. Each entry executes once: 55 probes total, 10 probes/second, and a 30-second upper limit. The YAML is generated from the catalog; new offline entries are also included in this combined profile.

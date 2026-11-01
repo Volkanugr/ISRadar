@@ -116,6 +116,8 @@ python3 scripts/prepare_all_vectors.py --summarize reports/DOCKER_DIRECTORY
 
 Use `l4-test` to select only the L4 catalog and configure TCP echo/UDP services on separate ports. Coverage of all 49 IDs and commands are in the [L4 test guide](l4-test.md).
 
+Use `high-priority` to account for all 80 High-importance IDs. The default IPv4 web plan has 13 live checks, 47 offline entries, and 20 awaiting service configuration. The [High-priority guide](high-priority-test.md) includes the Bash command and endpoint overrides for all 33 live checks.
+
 ## Reading results
 
 For each selected profile, the report directory contains `*-report.json`, `*-summary.json`, `*-audit.jsonl`, and `*-validation.log`. The terminal summary shows planned, started, completed, and cancelled counts along with target/actual rates. Evaluate HTTP status, timeout, TLS errors, and termination reason separately. A new command generates new settings; YAML files in old report directories are retained as records of past runs.

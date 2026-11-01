@@ -6,6 +6,7 @@ python3 scripts/check_project.py
 python3 scripts/test_http_log_comparison.py
 python3 scripts/test_docker_runner.py
 python3 scripts/test_l4_profiles.py
+python3 scripts/test_high_priority_profiles.py
 python3 scripts/check_wire.py
 if [[ ! -f Cargo.lock ]]; then cargo generate-lockfile; fi
 build_options=(--workspace --locked)

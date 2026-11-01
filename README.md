@@ -44,6 +44,8 @@ The output file must be new. `Ctrl+C`/SIGTERM stops execution, as does creating 
 | `l4` | 49 | Every TCP/UDP entry: 42 live implementations and 7 offline models |
 | `high-priority` | 80 | All High-importance entries from `vectors.md`: 33 live checks and 47 offline entries |
 
+Run the High-only Bash/Docker scenario with `bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority`. The [High-priority test guide](docs/high-priority-test.md) covers service configuration, pending entries, and per-ID reports.
+
 ```sh
 ./target/release/external-agent profiles list
 ./target/release/external-agent profiles create --preset researcher --directory profiles/researcher

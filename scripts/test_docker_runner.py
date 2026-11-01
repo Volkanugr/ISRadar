@@ -31,6 +31,9 @@ manifest = json.loads((directory / "configs/index.json").read_text())
 case = manifest["cases"][name]
 ids = case.get("vector_ids", [case.get("vector_id")])
 if "validate" in args:
+    if name == os.environ.get("ISRADAR_TEST_FAIL_VALIDATION"):
+        print("synthetic preflight failure", file=sys.stderr)
+        sys.exit(1)
     print(json.dumps({"valid": True, "vectors": ids}))
     sys.exit(0)
 # Synthetic failures reproduce the reported ICMP -> TCP transition.
@@ -57,19 +60,22 @@ else:
     output = directory / Path(args[args.index("--output") + 1]).name
     output.write_text(json.dumps(report))
     print(json.dumps({"fixture": True}))
+if name == os.environ.get("ISRADAR_TEST_STOP_AFTER"):
+    (directory / "STOP").write_text("stop fixture\n")
 '''
 
 
 class RunnerTests(unittest.TestCase):
-    def run_scenario(self, scenario, ip="198.51.100.10", ports=None):
+    def run_scenario(self, scenario, ip="198.51.100.10", ports=None, fail_validation=None, stop_after=None):
         with tempfile.TemporaryDirectory(prefix="isradar-bash-") as temporary:
             base = Path(temporary)
             project = base / "project with spaces"
             scripts = project / "scripts"
             scripts.mkdir(parents=True)
-            for name in ("docker-web-test.sh", "prepare_web_test.py", "prepare_all_vectors.py", "prepare_l4_test.py",
+            for name in ("docker-web-test.sh", "prepare_web_test.py", "prepare_all_vectors.py", "prepare_l4_test.py", "prepare_high_priority.py",
                          "generate_profiles.py", "generate_catalog.py"):
                 shutil.copyfile(ROOT / "scripts" / name, scripts / name)
+            shutil.copyfile(ROOT / "vectors.md", project / "vectors.md")
             ca = Path("external-agent/tests/fixtures/tls/ca.der")
             (project / ca).parent.mkdir(parents=True)
             shutil.copyfile(ROOT / ca, project / ca)
@@ -82,20 +88,38 @@ class RunnerTests(unittest.TestCase):
             environment = dict(os.environ, PATH=str(commands) + os.pathsep + os.environ["PATH"],
                                ISRADAR_TEST_CALLS=str(calls))
             for key in ("ISRADAR_TCP_PORT", "ISRADAR_TCP_ECHO_PORT", "ISRADAR_UDP_PORT",
-                        "ISRADAR_UDP_CLOSED_PORT", "ISRADAR_UDP_MEASUREMENT_PORT"):
+                        "ISRADAR_UDP_CLOSED_PORT", "ISRADAR_UDP_MEASUREMENT_PORT",
+                        "ISRADAR_HIGH_PRIORITY_SERVICES", "ISRADAR_TEST_FAIL_VALIDATION", "ISRADAR_TEST_STOP_AFTER"):
                 environment.pop(key, None)
             environment.update(ports or {})
+            if fail_validation:
+                environment["ISRADAR_TEST_FAIL_VALIDATION"] = fail_validation
+            if stop_after:
+                environment["ISRADAR_TEST_STOP_AFTER"] = stop_after
             result = subprocess.run(["/bin/bash", str(scripts / "docker-web-test.sh"),
                                      ip, "web.example", scenario],
                                     env=environment, capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual(result.returncode, 1 if fail_validation else 130 if stop_after else 0,
+                             result.stdout + result.stderr)
             recorded = [json.loads(line) for line in calls.read_text().splitlines()]
             runs = [args for args in recorded if args[0] == "run" and "validate" not in args]
             validations = [args for args in recorded if args[0] == "run" and "validate" in args]
-            self.assertEqual(len(validations), len(runs))
             self.assertTrue(all(args[args.index("--network") + 1] == "none" for args in validations))
             directory = next((project / "reports").iterdir())
             manifest = json.loads((directory / "configs/index.json").read_text())
+            if fail_validation or stop_after:
+                catalog = json.loads((directory / "catalog-results.json").read_text())
+                self.assertEqual(catalog["catalog_vectors"], 80)
+                if fail_validation:
+                    self.assertFalse(runs)
+                    self.assertEqual(catalog["counts"], {"no_complete_report": 60, "needs_configuration": 20})
+                else:
+                    self.assertEqual(len(runs), 1)
+                    self.assertEqual(len(validations), 14)
+                    self.assertEqual(catalog["counts"], {"offline_completed": 47, "no_complete_report": 13,
+                                                       "needs_configuration": 20})
+                return []
+            self.assertEqual(len(validations), len(runs))
             names = []
             for args in runs:
                 is_raw = "--entrypoint" in args
@@ -154,6 +178,14 @@ class RunnerTests(unittest.TestCase):
                 self.assertEqual(catalog["counts"]["offline_completed"], 7)
                 self.assertEqual(catalog["counts"]["live_completed"], 40 if ports else 24)
                 self.assertEqual(catalog["counts"]["needs_configuration"], 2 if ports else 18)
+            if scenario == "high-priority":
+                catalog = json.loads((directory / "catalog-results.json").read_text())
+                self.assertEqual(catalog["catalog_vectors"], 80)
+                self.assertEqual(catalog["counts"]["offline_completed"], 47)
+                live = (33 if ports else 13) - (5 if ":" in ip else 0)
+                self.assertEqual(catalog["counts"]["live_completed"], live)
+                self.assertEqual(catalog["counts"].get("needs_configuration", 0), 33 - live)
+                self.assertTrue(all(entry["importance"] == "High" for entry in catalog["vectors"]))
             return names
 
     def test_baseline_without_any_optional_arguments(self):
@@ -205,6 +237,35 @@ class RunnerTests(unittest.TestCase):
         self.assertIn("TCP-017", cases)
         self.assertIn("UDP-005", cases)
         self.assertIn("UDP-010", cases)
+
+    def test_high_priority_runs_only_high_ids_and_reports_missing_services(self):
+        cases = self.run_scenario("high-priority")
+        self.assertEqual(len(cases), 14)
+        self.assertEqual(cases[0], "offline-high-priority")
+        self.assertIn("TCP-009", cases)
+        self.assertIn("TLS-013", cases)
+        self.assertNotIn("TCP-005", cases)
+        self.assertNotIn("TCP-033", cases)
+
+    def test_high_priority_ipv6_keeps_ipv4_samples_pending(self):
+        cases = self.run_scenario("high-priority", ip="2001:db8::10")
+        self.assertEqual(len(cases), 9)
+        self.assertNotIn("TCP-009", cases)
+
+    def test_high_priority_with_explicit_services_runs_all_33_live_entries(self):
+        cases = self.run_scenario("high-priority", ports={
+            "ISRADAR_HIGH_PRIORITY_SERVICES": str(ROOT / "examples/high-priority-services.json"),
+        })
+        self.assertEqual(len(cases), 34)
+        self.assertIn("SIP-002", cases)
+        self.assertIn("HTTP-009", cases)
+        self.assertIn("TLS-009", cases)
+
+    def test_high_priority_preflight_failure_sends_nothing_and_still_summarizes(self):
+        self.run_scenario("high-priority", fail_validation="TCP-009")
+
+    def test_high_priority_stop_prevents_next_case_and_preserves_partial_summary(self):
+        self.run_scenario("high-priority", stop_after="offline-high-priority")
 
 
 if __name__ == "__main__":

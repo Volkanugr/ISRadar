@@ -2,13 +2,13 @@
 set -euo pipefail
 
 if [[ $# -lt 2 || $# -gt 3 ]]; then
-    echo "Kullanım: bash scripts/docker-web-test.sh HEDEF_IP SERTIFIKA_ALAN_ADI [baseline|signature|hacker-web|full-test|all-vectors|l4-test]" >&2
+    echo "Kullanım: bash scripts/docker-web-test.sh HEDEF_IP SERTIFIKA_ALAN_ADI [baseline|signature|hacker-web|full-test|all-vectors|l4-test|high-priority]" >&2
     exit 2
 fi
 scenario="${3:-baseline}"
 case "$scenario" in
-    baseline|signature|hacker-web|full-test|all-vectors|l4-test) ;;
-    *) echo "Senaryo baseline, signature, hacker-web, full-test, all-vectors veya l4-test olmalı." >&2; exit 2 ;;
+    baseline|signature|hacker-web|full-test|all-vectors|l4-test|high-priority) ;;
+    *) echo "Senaryo baseline, signature, hacker-web, full-test, all-vectors, l4-test veya high-priority olmalı." >&2; exit 2 ;;
 esac
 project_dir="$(cd "$(dirname "$0")/.." && pwd)"
 agent_image="${ISRADAR_IMAGE:-isradar-external-agent:local}"
@@ -20,7 +20,11 @@ report_dir="$(mktemp -d "$project_dir/reports/docker-web-XXXXXX")"
 profile_script=prepare_web_test.py
 if [[ "$scenario" == "all-vectors" ]]; then profile_script=prepare_all_vectors.py; fi
 if [[ "$scenario" == "l4-test" ]]; then profile_script=prepare_l4_test.py; fi
+if [[ "$scenario" == "high-priority" ]]; then profile_script=prepare_high_priority.py; fi
 profile_args=(--target-ip "$1" --server-name "$2" --directory "$report_dir/configs")
+if [[ "$scenario" == "high-priority" && -n "${ISRADAR_HIGH_PRIORITY_SERVICES:-}" ]]; then
+    profile_args+=(--services "$ISRADAR_HIGH_PRIORITY_SERVICES")
+fi
 if [[ "$scenario" == "l4-test" ]]; then
     profile_args+=(--tcp-port "${ISRADAR_TCP_PORT:-80}")
     if [[ -n "${ISRADAR_TCP_ECHO_PORT:-}" ]]; then profile_args+=(--tcp-echo-port "$ISRADAR_TCP_ECHO_PORT"); fi
@@ -29,6 +33,19 @@ if [[ "$scenario" == "l4-test" ]]; then
     if [[ -n "${ISRADAR_UDP_MEASUREMENT_PORT:-}" ]]; then profile_args+=(--udp-measurement-port "$ISRADAR_UDP_MEASUREMENT_PORT"); fi
 fi
 python3 "$project_dir/scripts/$profile_script" "${profile_args[@]}"
+if [[ "$scenario" == "high-priority" ]]; then
+    # Preserve an all-ID summary even after validation failure, STOP or a failed case.
+    summarize_high_priority() {
+        local run_status=$?
+        trap - EXIT
+        if ! python3 "$project_dir/scripts/$profile_script" --summarize "$report_dir"; then
+            if [[ "$run_status" == "0" ]]; then run_status=1; fi
+        fi
+        printf 'Rapor ve loglar: %s\n' "$report_dir"
+        exit "$run_status"
+    }
+    trap summarize_high_priority EXIT
+fi
 python3 - "$report_dir/configs/index.json" "$scenario" >"$report_dir/selected-cases.tsv" <<'PY'
 import json
 from pathlib import Path
@@ -153,4 +170,4 @@ done <"$report_dir/selected-cases.tsv"
 if [[ "$scenario" == "all-vectors" || "$scenario" == "l4-test" ]]; then
     python3 "$project_dir/scripts/$profile_script" --summarize "$report_dir"
 fi
-printf 'Rapor ve loglar: %s\n' "$report_dir"
+if [[ "$scenario" != "high-priority" ]]; then printf 'Rapor ve loglar: %s\n' "$report_dir"; fi

@@ -21,6 +21,7 @@ jobs:
           python3 scripts/check_project.py
           python3 scripts/test_docker_runner.py
           python3 scripts/test_l4_profiles.py
+          python3 scripts/test_high_priority_profiles.py
           python3 scripts/check_wire.py
       - name: Capture build prerequisites
         run: sudo apt-get update && sudo apt-get install -y libpcap-dev pkg-config
