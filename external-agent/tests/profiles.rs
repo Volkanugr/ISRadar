@@ -6,6 +6,87 @@ use external_agent::{
 use std::collections::HashSet;
 
 #[test]
+fn high_priority_preset_contains_exactly_the_documented_high_vectors() {
+    let guide = std::fs::read_to_string(
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../vectors.md"),
+    )
+    .unwrap();
+    let expected: HashSet<String> = guide
+        .lines()
+        .filter_map(|line| {
+            let columns: Vec<_> = line.split('|').map(str::trim).collect();
+            (columns.get(3) == Some(&"High")).then(|| columns[1].trim_matches('`').to_owned())
+        })
+        .collect();
+    assert_eq!(expected.len(), 80);
+    let presets = profiles::list().unwrap();
+    let ids = presets.get("high-priority").unwrap();
+    assert_eq!(ids.len(), expected.len());
+    assert_eq!(ids.iter().cloned().collect::<HashSet<_>>(), expected);
+
+    let temp = tempfile::tempdir().unwrap();
+    let destination = temp.path().join("high-priority");
+    let create = std::process::Command::new(env!("CARGO_BIN_EXE_external-agent"))
+        .args([
+            "profiles",
+            "create",
+            "--preset",
+            "high-priority",
+            "--directory",
+        ])
+        .arg(&destination)
+        .output()
+        .unwrap();
+    assert!(
+        create.status.success(),
+        "{}",
+        String::from_utf8_lossy(&create.stderr)
+    );
+    let index: serde_json::Value =
+        serde_json::from_slice(&std::fs::read(destination.join("index.json")).unwrap()).unwrap();
+    assert_eq!(index["preset"], "high-priority");
+    let configs = index["configs"].as_array().unwrap();
+    assert_eq!(configs.len(), expected.len());
+    let registry = Registry::bundled().unwrap();
+    let mut actual = HashSet::new();
+    let (mut live, mut offline, mut raw) = (0, 0, 0);
+    for filename in configs {
+        let config = Config::read(&destination.join(filename.as_str().unwrap())).unwrap();
+        assert_eq!(config.vectors.len(), 1);
+        let vector = registry.get(&config.vectors[0]).unwrap();
+        assert!(actual.insert(vector.id.clone()));
+        if config.mode == Mode::LiveValidation {
+            live += 1;
+            assert!(config.target.as_ref().unwrap().ip.is_loopback());
+        } else {
+            offline += 1;
+            assert!(config.target.is_none());
+        }
+        vector
+            .validate(config.mode, config.target.as_ref())
+            .unwrap();
+        vector.backend.validate_options(&config.protocol).unwrap();
+        if vector.backend.is_raw() {
+            raw += 1;
+            assert!(config.limits.max_probes * vector.backend.raw_packet_cost() <= 16);
+            assert_eq!(config.limits.probes_per_second, 1);
+            assert_eq!(config.limits.concurrency, 1);
+        }
+        if vector.backend.is_raw() && !cfg!(target_os = "linux") {
+            assert!(engine::validate(&config, &registry)
+                .unwrap_err()
+                .to_string()
+                .contains("requires Linux"));
+        } else {
+            engine::validate(&config, &registry).unwrap();
+        }
+    }
+    assert_eq!(actual, expected);
+    assert_eq!((live, offline, raw), (33, 47, 5));
+    assert!(destination.join("ca.der").is_file());
+}
+
+#[test]
 fn l4_preset_has_every_transport_case_and_no_application_or_ip_cases() {
     let temp = tempfile::tempdir().unwrap();
     let destination = temp.path().join("l4");

@@ -75,6 +75,7 @@ python3 scripts/check_project.py
 
 - `scripts/generate_catalog.py` owns `external-agent/vectors/catalog.yaml` and `docs/vector-coverage.md`.
 - `scripts/generate_profiles.py` owns `external-agent/vectors/profiles/bundle.json`, `lab.yaml`, and `cases/*.yaml`.
+- `vectors.md` owns the importance ratings used to generate the `high-priority` preset; rate every catalog ID exactly once before regenerating profiles.
 - `scripts/prepare_web_test.py`, `prepare_all_vectors.py`, and `prepare_l4_test.py` create per-run plans and manifests in new directories.
 
 Do not hand-edit generated files as the only change. Catalog test references must name actual test functions. Keep backend mappings, preset membership, coverage counts, and documentation consistent. Metadata alone does not implement a protocol.
@@ -90,7 +91,7 @@ The workflow is `run --config ... --output ...`; the engine validates the plan a
 ./target/debug/external-agent validate --config profiles/l4/TCP-001.yaml
 ```
 
-Presets are `basic`, `sophisticated`, `researcher`, `hacker`, and `l4`. They default to loopback. Service-dependent checks need matching endpoints; missing UDP/echo services must not be silently directed to HTTP ports. Configuration validation does not establish target availability.
+Presets are `basic`, `sophisticated`, `researcher`, `hacker`, `l4`, and `high-priority`. The latter contains all 80 High-importance entries from `vectors.md` (33 live and 47 offline). They default to loopback. Service-dependent checks need matching endpoints; missing UDP/echo services must not be silently directed to HTTP ports. Configuration validation does not establish target availability.
 
 The Docker runner supports `baseline`, `signature`, `hacker-web`, `full-test`, `all-vectors`, and `l4-test`. `hacker-web` differs from the CLI's `hacker` preset. See [profiles](docs/profiles.md), [L4 tests](docs/l4-test.md), and [UniFi tests](docs/unifi-test.md) for selection, ports, and current plan counts. [Native Linux deployment](deploy.md) is supported; Docker is optional.
 

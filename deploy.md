@@ -79,7 +79,7 @@ external-agent profiles create --preset researcher --directory profiles/research
 external-agent run --config profiles/researcher/HTTP-001.yaml --output report-001.json
 ```
 
-Available sets are `basic`, `sophisticated`, `researcher`, `hacker`, and `l4`. `researcher` generates YAML for all 184 entries; `l4` covers all 49 L4 entries. Advanced protocols need suitable services; the [profile guide](docs/profiles.md) describes default ports and expectations.
+Available sets are `basic`, `sophisticated`, `researcher`, `hacker`, `l4`, and `high-priority`. `researcher` generates YAML for all 184 entries; `l4` covers all 49 L4 entries; `high-priority` includes all 80 High-importance entries from `vectors.md`. Advanced protocols need suitable services; the [profile guide](docs/profiles.md) describes default ports and expectations.
 
 For a real test, edit `target.ip`, `port`, and, where needed, `server_name` and `protocol` in the selected YAML. No separate operator approval, signature, authorization key, or authorization file is required:
 

@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 import sys
 
 sys.dont_write_bytecode = True
@@ -94,6 +95,28 @@ def yaml_lines(value, level=0):
     return lines
 
 
+def high_priority_ids():
+    """Use the guide's importance ratings without changing catalog execution risk."""
+    ratings = {}
+    for line in (ROOT / "vectors.md").read_text().splitlines():
+        match = re.match(r"^\| `([A-Z]+-\d{3})` \| (?:Live|Raw|Model|Fixture) \| (Low|Medium|High) \|", line)
+        if match:
+            vector_id, importance = match.groups()
+            if vector_id in ratings:
+                raise ValueError(f"duplicate importance rating in vectors.md: {vector_id}")
+            ratings[vector_id] = importance
+    expected = {row["id"] for row in ROWS}
+    if set(ratings) != expected:
+        raise ValueError(
+            "vectors.md must rate every catalog ID exactly once; "
+            f"missing={sorted(expected - set(ratings))}, unknown={sorted(set(ratings) - expected)}"
+        )
+    selected = [row["id"] for row in ROWS if ratings[row["id"]] == "High"]
+    if not selected:
+        raise ValueError("vectors.md has no High-importance vectors")
+    return selected
+
+
 def outputs():
     basic = {"TCP-001", "UDP-001", "UDP-010", "HTTP-001", "HTTP-003", "HTTP-007"}
     negative = {"UDP-002", "DNS-007", "SIP-002", "SIP-003", "HTTP-009", "HTTP-017", "TLS-006", "TLS-009", "TLS-010"}
@@ -103,6 +126,7 @@ def outputs():
         "researcher": [r["id"] for r in ROWS],
         "hacker": [r["id"] for r in ROWS if r["mode"] == "lab_emulation" or r["id"] in negative],
         "l4": [r["id"] for r in ROWS if r["layer"] == "L4"],
+        "high-priority": high_priority_ids(),
     }
     configs = {row["id"]: config(row) for row in ROWS}
     result = {BASE / "bundle.json": json.dumps({"schema_version": 1, "presets": presets, "configs": configs}, indent=2) + "\n"}

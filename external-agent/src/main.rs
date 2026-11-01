@@ -115,7 +115,7 @@ enum VectorCommand {
 enum ProfileCommand {
     List,
     Create {
-        #[arg(long, default_value = "basic", value_parser = ["basic", "sophisticated", "researcher", "hacker", "l4"])]
+        #[arg(long, default_value = "basic", value_parser = ["basic", "sophisticated", "researcher", "hacker", "l4", "high-priority"])]
         preset: String,
         #[arg(long)]
         directory: PathBuf,

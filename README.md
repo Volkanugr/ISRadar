@@ -42,6 +42,7 @@ The output file must be new. `Ctrl+C`/SIGTERM stops execution, as does creating 
 | `researcher` | 184 | A separate YAML file for every catalog vector |
 | `hacker` | 64 | 55 offline scenarios and 9 controlled rejection/policy checks |
 | `l4` | 49 | Every TCP/UDP entry: 42 live implementations and 7 offline models |
+| `high-priority` | 80 | All High-importance entries from `vectors.md`: 33 live checks and 47 offline entries |
 
 ```sh
 ./target/release/external-agent profiles list

@@ -209,6 +209,17 @@ The local fixture suppresses access logs, so this comparison requires a separate
 
 A proxy log establishes receipt at that proxy; use an origin log/capture to claim receipt farther downstream. TRACE, CONNECT, HTTP reuse, and HTTP/3 are outside the current HTTP identity-correlation scope. For those, collect suitable independent evidence. [Measurement semantics](docs/measurement.md) and [HTTP correlation scope](docs/http-log-correlation.md).
 
+## Create the High-importance profile set
+
+The `high-priority` preset selects every **High** entry in the tables below: **80 vectors**, comprising **33 live checks** (including 5 raw samples) and **47 offline entries**. Medium and Low entries are excluded.
+
+```sh
+cargo build --locked -p external-agent
+./target/debug/external-agent profiles create --preset high-priority --directory profiles/high-priority
+```
+
+The set contains one YAML per vector and an `index.json` listing all files. Each case preserves its own execution mode and service settings; live and offline checks cannot share one engine plan. Creation sends no traffic. Configure the appropriate services before execution. See the [profile guide](docs/profiles.md#high-importance-vectors) for details.
+
 ## Vector reference
 
 Every catalog ID appears once below. **Importance** is the proposed scenario importance, not proof of a finding. **Evidence** identifies the basis required for interpretation:

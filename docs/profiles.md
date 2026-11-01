@@ -14,6 +14,7 @@ Creating a set only writes files. Each YAML in these sets runs one vector; inspe
 | `researcher` | 184 | Every catalog entry, including Linux raw samples and offline scenarios |
 | `hacker` | 64 | 55 offline event/malformed-packet scenarios; closed UDP port, NXDOMAIN, SIP policy, CONNECT/redirect, and negative TLS checks |
 | `l4` | 49 | All L4 entries: 42 live TCP/UDP implementations and 7 offline models |
+| `high-priority` | 80 | Every High-importance entry in `vectors.md`: 33 live checks and 47 offline entries |
 
 Set names select coverage; they do not increase rates or quotas. Normal files use 1 probe/second, one worker, and 3 probes; raw/INVITE/CONNECT and offline files use 1 probe. Each file runs for at most 15 seconds. For the 1,000-datagram UDP example, use `delivery.yaml` created by `external-agent demo --directory local-demo`.
 
@@ -22,6 +23,20 @@ For a real server on ports 80/443, `prepare_web_test.py` generates eight web YAM
 `all-vectors` uses `prepare_all_vectors.py` to account for all 184 entries: an IPv4 web target has 47 live-ready entries (26 normal + 21 raw TCP), 55 offline entries, and 82 entries awaiting configuration. The IPv6 counts are 26/55/103. Pending entries are neither sent nor counted as passed. [Docker-based UniFi testing](unifi-test.md).
 
 `l4-test` separately accounts for all 49 L4 entries. With the default IPv4 TCP port 80 target, it has 24 live entries, 7 offline entries, and 18 awaiting configuration. Supplying TCP echo and UDP service ports prepares 40 live IPv4 entries; two IPv6 entries remain pending. [L4 port configuration and scope](l4-test.md).
+
+## High-importance vectors
+
+The `high-priority` preset includes all 80 entries rated **High** in the [vector guide](../vectors.md), with no Medium or Low entries. It contains 33 live checks (28 ordinary protocol checks and 5 raw TCP samples) and 47 offline entries (40 event models and 7 fixtures).
+
+```sh
+./target/debug/external-agent profiles create --preset high-priority --directory profiles/high-priority
+```
+
+This writes 80 individual YAML files, `index.json`, and the development `ca.der` used by the TLS examples. Each YAML retains its vector's mode, limits, service settings, and STOP behavior. A single engine plan cannot mix live and offline modes, and these vectors require different services, so the set uses one YAML per vector. The index lists every selected file.
+
+Review the targets and protocol expectations before running individual files. The raw entries require Linux/CAP_NET_RAW; TLS/DNS/SIP checks need the matching services and test expectations described below. Creating the set sends no traffic. A High rating on an offline entry does not turn it into a live test.
+
+Membership is generated from the importance column in `vectors.md`. After changing ratings, regenerate with `python3 scripts/generate_profiles.py` and rebuild the agent. Existing generated profile directories are not updated; create a new directory for the refreshed set.
 
 ## All 55 offline entries
 
