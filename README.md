@@ -6,7 +6,7 @@ A Rust agent for L3/L4/L7 protocol checks and offline event models. This phase c
 
 [L4 test guide](docs/l4-test.md): the `l4` YAML set and `l4-test` Docker plan cover all 49 L4 entries, including TCP flag/option samples, session checks, and UDP variants.
 
-The [UniFi test guide](docs/unifi-test.md) covers Docker tests against a real server on ports 80/443: `baseline`, `signature`, the eight-step `hacker-web`, the 16-step IPv4 `full-test`, and `all-vectors`, which accounts for 184 entries. Normal live steps use 100 probes at a target rate of 10 probes/second; SYN/SYN-ACK samples use 16 probes at 1 probe/second. `full-test` also runs one offline Slowloris model. HTTP probes can be [matched to target access logs](docs/http-log-correlation.md).
+The [UniFi test guide](docs/unifi-test.md) covers Docker tests against a real server on ports 80/443: `baseline`, `signature`, the eight-step `hacker-web`, the 16-step IPv4 `full-test`, and `all-vectors`, which accounts for 185 entries. Normal live steps use 100 probes at a target rate of 10 probes/second; SYN/SYN-ACK samples use 16 probes at 1 probe/second. `full-test` also runs one offline Slowloris model. HTTP probes can be [matched to target access logs](docs/http-log-correlation.md).
 
 ## Quick start
 
@@ -38,11 +38,11 @@ The output file must be new. `Ctrl+C`/SIGTERM stops execution, as does creating 
 | Set | YAML files | Contents |
 | --- | ---: | --- |
 | `basic` | 6 | TCP, UDP, HTTP, and the sequenced UDP sender |
-| `sophisticated` | 90 | All non-raw live protocol checks, including L7 details |
-| `researcher` | 184 | A separate YAML file for every catalog vector |
+| `sophisticated` | 91 | All non-raw live protocol checks, including L7 details |
+| `researcher` | 185 | A separate YAML file for every catalog vector |
 | `hacker` | 64 | 55 offline scenarios and 9 controlled rejection/policy checks |
 | `l4` | 49 | Every TCP/UDP entry: 42 live implementations and 7 offline models |
-| `high-priority` | 80 | All High-importance entries from `vectors.md`: 33 live checks and 47 offline entries |
+| `high-priority` | 81 | All High-importance entries from `vectors.md`: 34 live checks and 47 offline entries |
 
 Run the High-only Bash/Docker scenario with `bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority`. The [High-priority test guide](docs/high-priority-test.md) covers service configuration, pending entries, and per-ID reports.
 
@@ -56,9 +56,9 @@ Run the High-only Bash/Docker scenario with `bash scripts/docker-web-test.sh TAR
 
 Profiles start with loopback targets. Basic TCP/UDP/HTTP fixtures are in `local_servers.py`; advanced protocols need their own test services. Edit the address, port, hostname, and protocol expectations in the YAML. [Service mappings and sequential execution](docs/profiles.md).
 
-The catalog contains **184 entries**: L3=33, L4=49, L7=102. Of these, **129 are bounded live checks** and **55 are offline models/fixtures**; no entries contain only metadata. Some entries share a backend. Named disruptive families are offline models as specified in the project document; this is not a claim of 184 independent attack tools or vendor parity. [Per-ID matrix](docs/vector-coverage.md).
+The catalog contains **185 entries**: L3=33, L4=49, L7=103. Of these, **130 are bounded live checks** and **55 are offline models/fixtures**; no entries contain only metadata. Some entries share a backend. Named disruptive families are offline models as specified in the project document; this is not a claim of 185 independent attack tools or vendor parity. [Per-ID matrix](docs/vector-coverage.md).
 
-**These 55 entries have no live-network implementation.** `implemented` means that code exists for the selected mode: 41 entries are event models and 14 are packet/protocol fixtures. For example, `HTTP-025` does not open connections to a target; it calculates slot occupancy in a model. Passing an offline test says nothing about firewall behavior or actual server resilience. Linux network acceptance testing is also incomplete for the 129 entries with live code.
+**These 55 entries have no live-network implementation.** `implemented` means that code exists for the selected mode: 41 entries are event models and 14 are packet/protocol fixtures. For example, `HTTP-025` does not open connections to a target; it calculates slot occupancy in a model. Passing an offline test says nothing about firewall behavior or actual server resilience. Linux network acceptance testing is also incomplete for the 130 entries with live code.
 
 ## Sending 1,000 UDP datagrams
 

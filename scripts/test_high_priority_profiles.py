@@ -20,10 +20,10 @@ class HighPriorityProfiles(unittest.TestCase):
                 counts = prepare(ip, "web.example", directory)
                 self.assertEqual(counts, {"live_ready": 13 if version == 4 else 8,
                                           "offline_ready": 47,
-                                          "needs_configuration": 20 if version == 4 else 25})
+                                          "needs_configuration": 21 if version == 4 else 26})
                 manifest = json.loads((directory / "index.json").read_text())
                 self.assertEqual({entry["id"] for entry in manifest["catalog"]}, set(high_priority_ids()))
-                self.assertEqual(len(manifest["catalog"]), 80)
+                self.assertEqual(len(manifest["catalog"]), 81)
                 self.assertEqual(manifest["high-priority"][0], "offline-high-priority.yaml")
                 self.assertTrue(all(entry["importance"] == "High" for entry in manifest["catalog"]))
                 for entry in manifest["catalog"]:
@@ -44,7 +44,7 @@ class HighPriorityProfiles(unittest.TestCase):
             for version, ip in [(4, "198.51.100.10"), (6, "2001:db8::10")]:
                 directory = Path(temporary) / f"v{version}"
                 counts = prepare(ip, "web.example", directory, EXAMPLE)
-                expected = {"live_ready": 33 if version == 4 else 28, "offline_ready": 47}
+                expected = {"live_ready": 34 if version == 4 else 29, "offline_ready": 47}
                 if version == 6:
                     expected["needs_configuration"] = 5
                 self.assertEqual(counts, expected)

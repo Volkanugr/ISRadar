@@ -10,29 +10,29 @@ Creating a set only writes files. Each YAML in these sets runs one vector; inspe
 | Set | Files | Purpose |
 | --- | ---: | --- |
 | `basic` | 6 | TCP-001, UDP-001/010, HTTP-001/003/007 |
-| `sophisticated` | 90 | All non-raw live checks: HTTP/1.1/2/3, TLS, DNS, NTP, SIP, and session variants |
-| `researcher` | 184 | Every catalog entry, including Linux raw samples and offline scenarios |
+| `sophisticated` | 91 | All non-raw live checks: HTTP/1.1/2/3, TLS, DNS, NTP, SIP, and session variants |
+| `researcher` | 185 | Every catalog entry, including Linux raw samples and offline scenarios |
 | `hacker` | 64 | 55 offline event/malformed-packet scenarios; closed UDP port, NXDOMAIN, SIP policy, CONNECT/redirect, and negative TLS checks |
 | `l4` | 49 | All L4 entries: 42 live TCP/UDP implementations and 7 offline models |
-| `high-priority` | 80 | Every High-importance entry in `vectors.md`: 33 live checks and 47 offline entries |
+| `high-priority` | 81 | Every High-importance entry in `vectors.md`: 34 live checks and 47 offline entries |
 
 Set names select coverage; they do not increase rates or quotas. Normal files use 1 probe/second, one worker, and 3 probes; raw/INVITE/CONNECT and offline files use 1 probe. Each file runs for at most 15 seconds. For the 1,000-datagram UDP example, use `delivery.yaml` created by `external-agent demo --directory local-demo`.
 
 For a real server on ports 80/443, `prepare_web_test.py` generates eight web YAML files, three ICMP/TCP files, four SYN/SYN-ACK files for IPv4 targets, and one offline Slowloris file. Select `baseline`, `signature`, `hacker-web`, or `full-test` in the Docker script. Normal live steps use 100 probes at a target rate of 10 probes/second; raw steps use at most 16 samples, 1 probe/second, and one worker. The Slowloris model runs once without networking. `hacker-web` has eight web steps; IPv4 `full-test` has 16 steps. For IPv6, the four IPv4 raw entries are skipped with reasons, leaving 12 steps. These scenarios differ from the CLI's 64-entry `hacker` preset.
 
-`all-vectors` uses `prepare_all_vectors.py` to account for all 184 entries: an IPv4 web target has 47 live-ready entries (26 normal + 21 raw TCP), 55 offline entries, and 82 entries awaiting configuration. The IPv6 counts are 26/55/103. Pending entries are neither sent nor counted as passed. [Docker-based UniFi testing](unifi-test.md).
+`all-vectors` uses `prepare_all_vectors.py` to account for all 185 entries: an IPv4 web target has 47 live-ready entries (26 normal + 21 raw TCP), 55 offline entries, and 83 entries awaiting configuration. The IPv6 counts are 26/55/104. Pending entries are neither sent nor counted as passed. [Docker-based UniFi testing](unifi-test.md).
 
 `l4-test` separately accounts for all 49 L4 entries. With the default IPv4 TCP port 80 target, it has 24 live entries, 7 offline entries, and 18 awaiting configuration. Supplying TCP echo and UDP service ports prepares 40 live IPv4 entries; two IPv6 entries remain pending. [L4 port configuration and scope](l4-test.md).
 
 ## High-importance vectors
 
-The `high-priority` preset includes all 80 entries rated **High** in the [vector guide](../vectors.md), with no Medium or Low entries. It contains 33 live checks (28 ordinary protocol checks and 5 raw TCP samples) and 47 offline entries (40 event models and 7 fixtures).
+The `high-priority` preset includes all 81 entries rated **High** in the [vector guide](../vectors.md), with no Medium or Low entries. It contains 34 live checks (29 ordinary protocol checks and 5 raw TCP samples) and 47 offline entries (40 event models and 7 fixtures).
 
 ```sh
 ./target/debug/external-agent profiles create --preset high-priority --directory profiles/high-priority
 ```
 
-This writes 80 individual YAML files, `index.json`, and the development `ca.der` used by the TLS examples. Each YAML retains its vector's mode, limits, service settings, and STOP behavior. A single engine plan cannot mix live and offline modes, and these vectors require different services, so the set uses one YAML per vector. The index lists every selected file.
+This writes 81 individual YAML files, `index.json`, and the development `ca.der` used by the TLS examples. Each YAML retains its vector's mode, limits, service settings, and STOP behavior. A single engine plan cannot mix live and offline modes, and these vectors require different services, so the set uses one YAML per vector. The index lists every selected file.
 
 Review the targets and protocol expectations before running individual files. The raw entries require Linux/CAP_NET_RAW; TLS/DNS/SIP checks need the matching services and test expectations described below. Creating the set sends no traffic. A High rating on an offline entry does not turn it into a live test.
 
@@ -44,7 +44,7 @@ To run the High-only set through Bash/Docker with a fresh target-specific plan:
 bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority
 ```
 
-The default IPv4 web plan runs 13 live checks and 47 offline entries; the other 20 IDs remain pending until their services are configured. The [High-priority test guide](high-priority-test.md) describes configuring all 33 live entries, reports, and STOP behavior.
+The default IPv4 web plan runs 13 live checks and 47 offline entries; the other 21 IDs remain pending until their services are configured. The [High-priority test guide](high-priority-test.md) describes configuring all 34 live entries, reports, and STOP behavior.
 
 ## All 55 offline entries
 
@@ -97,7 +97,7 @@ external-agent profiles create --preset hacker --directory profiles/hacker
 external-agent run --config profiles/hacker/HTTP-025.yaml --output slow-model.json
 ```
 
-`HTTP-025` is an offline slot-occupancy model; it does not send Slowloris traffic to a target. Offline files need no network service. The source also includes [184 YAML files](../external-agent/vectors/profiles/cases). Use `profiles create` for UDP-010 so a fresh measurement key and run_id are generated.
+`HTTP-025` is an offline slot-occupancy model; it does not send Slowloris traffic to a target. Offline files need no network service. The source also includes [185 YAML files](../external-agent/vectors/profiles/cases). Use `profiles create` for UDP-010 so a fresh measurement key and run_id are generated.
 
 To run the basic set sequentially once the basic services are ready:
 

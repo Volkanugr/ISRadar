@@ -109,15 +109,15 @@ class RunnerTests(unittest.TestCase):
             manifest = json.loads((directory / "configs/index.json").read_text())
             if fail_validation or stop_after:
                 catalog = json.loads((directory / "catalog-results.json").read_text())
-                self.assertEqual(catalog["catalog_vectors"], 80)
+                self.assertEqual(catalog["catalog_vectors"], 81)
                 if fail_validation:
                     self.assertFalse(runs)
-                    self.assertEqual(catalog["counts"], {"no_complete_report": 60, "needs_configuration": 20})
+                    self.assertEqual(catalog["counts"], {"no_complete_report": 60, "needs_configuration": 21})
                 else:
                     self.assertEqual(len(runs), 1)
                     self.assertEqual(len(validations), 14)
                     self.assertEqual(catalog["counts"], {"offline_completed": 47, "no_complete_report": 13,
-                                                       "needs_configuration": 20})
+                                                       "needs_configuration": 21})
                 return []
             self.assertEqual(len(validations), len(runs))
             names = []
@@ -168,7 +168,7 @@ class RunnerTests(unittest.TestCase):
                 self.assertIn("Atlandı: l4-syn-80", result.stderr)
             if scenario == "all-vectors":
                 catalog = json.loads((directory / "catalog-results.json").read_text())
-                self.assertEqual(catalog["catalog_vectors"], 184)
+                self.assertEqual(catalog["catalog_vectors"], 185)
                 for entry in catalog["vectors"]:
                     if entry["id"] in {"TCP-002", "TCP-003"}:
                         self.assertEqual(entry["status"], "live_completed" if ":" not in ip else "needs_configuration")
@@ -180,11 +180,11 @@ class RunnerTests(unittest.TestCase):
                 self.assertEqual(catalog["counts"]["needs_configuration"], 2 if ports else 18)
             if scenario == "high-priority":
                 catalog = json.loads((directory / "catalog-results.json").read_text())
-                self.assertEqual(catalog["catalog_vectors"], 80)
+                self.assertEqual(catalog["catalog_vectors"], 81)
                 self.assertEqual(catalog["counts"]["offline_completed"], 47)
-                live = (33 if ports else 13) - (5 if ":" in ip else 0)
+                live = (34 if ports else 13) - (5 if ":" in ip else 0)
                 self.assertEqual(catalog["counts"]["live_completed"], live)
-                self.assertEqual(catalog["counts"].get("needs_configuration", 0), 33 - live)
+                self.assertEqual(catalog["counts"].get("needs_configuration", 0), 34 - live)
                 self.assertTrue(all(entry["importance"] == "High" for entry in catalog["vectors"]))
             return names
 
@@ -252,11 +252,11 @@ class RunnerTests(unittest.TestCase):
         self.assertEqual(len(cases), 9)
         self.assertNotIn("TCP-009", cases)
 
-    def test_high_priority_with_explicit_services_runs_all_33_live_entries(self):
+    def test_high_priority_with_explicit_services_runs_all_34_live_entries(self):
         cases = self.run_scenario("high-priority", ports={
             "ISRADAR_HIGH_PRIORITY_SERVICES": str(ROOT / "examples/high-priority-services.json"),
         })
-        self.assertEqual(len(cases), 34)
+        self.assertEqual(len(cases), 35)
         self.assertIn("SIP-002", cases)
         self.assertIn("HTTP-009", cases)
         self.assertIn("TLS-009", cases)

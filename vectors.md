@@ -1,6 +1,6 @@
 # External Agent Vectors and Traffic-Passage Reporting
 
-This guide describes all **184 vectors** in `external-agent`, assigns an importance level to each scenario, and gives examples of reports based on whether the test traffic reached the protected destination.
+This guide describes all **185 vectors** in `external-agent`, assigns an importance level to each scenario, and gives examples of reports based on whether the test traffic reached the protected destination.
 
 **Scope:** the English descriptions reflect the current source code. The importance levels, report categories, and percentage thresholds below are **proposed reporting policy**. They do not add a receiver or scoring engine to the agent. Numerical examples are illustrative, not measurements from a remote assessment.
 
@@ -15,14 +15,14 @@ This guide describes all **184 vectors** in `external-agent`, assigns an importa
 | DNS | L7 | 22 | 18 | 4 |
 | NTP | L7 | 8 | 6 | 2 |
 | SIP | L7 | 11 | 8 | 3 |
-| HTTP | L7 | 38 | 24 | 14 |
+| HTTP | L7 | 39 | 25 | 14 |
 | TLS | L7 | 13 | 11 | 2 |
 | SPECIAL | Cataloged as L7 | 10 | 0 | 10 |
-| **Total** | | **184** | **129** | **55** |
+| **Total** | | **185** | **130** | **55** |
 
 Execution types:
 
-- **Live:** `live_validation`; performs a bounded protocol exchange with the configured destination. There are 90 ordinary live entries.
+- **Live:** `live_validation`; performs a bounded protocol exchange with the configured destination. There are 91 ordinary live entries.
 - **Raw:** also `live_validation`; sends specific packet samples on Linux with `CAP_NET_RAW`. There are 39 raw entries.
 - **Model:** `lab_emulation` / `offline_model`; runs an in-memory workload model without traffic. There are 41.
 - **Fixture:** `lab_emulation` / `offline_policy_fixture` or `offline_packet`; constructs and checks bytes without sending them. There are 14.
@@ -44,7 +44,7 @@ Use explicit labels to avoid confusing successful delivery with successful prote
 | Allow | Delivery or the required exchange fails | **Availability or compatibility deviation.** Investigate the path/service; passage itself is not a weakness. |
 | Offline model or fixture | Local simulation/validation completes | **No live protection assessment.** No packet-passage percentage is available. |
 
-A successful TCP connection, valid HTTP request, DNS response, or RST packet is not inherently malicious. Define the expected policy for the exact source, destination, port, direction, and vector before interpreting passage as a weakness. These entries include baseline checks, protocol validation, and offline scenarios; they are not 184 independently implemented attacks.
+A successful TCP connection, valid HTTP request, DNS response, or RST packet is not inherently malicious. Define the expected policy for the exact source, destination, port, direction, and vector before interpreting passage as a weakness. These entries include baseline checks, protocol validation, and offline scenarios; they are not 185 independently implemented attacks.
 
 ## Importance levels
 
@@ -211,7 +211,7 @@ A proxy log establishes receipt at that proxy; use an origin log/capture to clai
 
 ## Create the High-importance profile set
 
-The `high-priority` preset selects every **High** entry in the tables below: **80 vectors**, comprising **33 live checks** (including 5 raw samples) and **47 offline entries**. Medium and Low entries are excluded.
+The `high-priority` preset selects every **High** entry in the tables below: **81 vectors**, comprising **34 live checks** (including 5 raw samples) and **47 offline entries**. Medium and Low entries are excluded.
 
 ```sh
 cargo build --locked -p external-agent
@@ -403,9 +403,9 @@ Dedicated test identities are required for INVITE/REGISTER policy checks. A matc
 | `SIP-010` | Model | High | Offline | INVITE Flood model: represents transaction-state occupancy and processing work. |
 | `SIP-011` | Live | High | Exchange | Runs bounded repeated UDP OPTIONS transactions using SIP-001's backend. |
 
-## HTTP — 38 vectors
+## HTTP — 39 vectors
 
-Live HTTP checks inspect status and headers without downloading the response body or following redirects. State-changing methods use an explicitly configured dedicated test path. HTTP-025/026 are offline models; HTTP-037/038 complete a real exchange with a 25 ms inter-chunk delay and do not establish capacity exhaustion.
+Live HTTP checks inspect status and headers without downloading the response body or following redirects. State-changing methods use an explicitly configured dedicated test path. HTTP-025/026 are offline models; HTTP-037/038/039 complete a real exchange with a 25 ms inter-chunk delay and do not establish capacity exhaustion.
 
 | ID | Type | Importance | Evidence | What it does |
 | --- | --- | --- | --- | --- |
@@ -447,6 +447,7 @@ Live HTTP checks inspect status and headers without downloading the response bod
 | `HTTP-036` | Live | High | Exchange | Runs bounded repeated POST requests against the configured test path using HTTP-002's backend. |
 | `HTTP-037` | Live | High | Exchange | Completes request headers in two parts separated by 25 ms, then checks the response; each probe is a complete exchange. |
 | `HTTP-038` | Live | High | Exchange | Sends a POST body in two parts separated by 25 ms, then checks the response; each probe is a complete exchange. |
+| `HTTP-039` | Live | High | Exchange | Bounded live Slowloris sample: completes request headers in two parts separated by 25 ms, then checks the response; each probe is a complete exchange, with no capacity-exhaustion or Slowloris/RUDY equivalence claim. |
 
 ## TLS — 13 vectors
 

@@ -152,6 +152,19 @@
       }
     }
   },
+  "HTTP-039": {
+    "port": 9002,
+    "protocol": {
+      "http": {
+        "path": "/",
+        "body": "",
+        "headers": {},
+        "expected_status": 200,
+        "expected_headers": {},
+        "dedicated_test_endpoint": false
+      }
+    }
+  },
   "TLS-006": {
     "port": 9444,
     "server_name": "validator.example",

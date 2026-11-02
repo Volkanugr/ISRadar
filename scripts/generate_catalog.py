@@ -125,6 +125,7 @@ ROWS = {
         ("Bounded live HTTP POST workload", "http_post"),
         ("Bounded live partial-header HTTP workload", "http_slow_headers"),
         ("Bounded live slow-body HTTP workload", "http_slow_body"),
+        ("Bounded live Slowloris sample", "http_slow_headers"),
     ],
     "TLS": [
         ("TLS 1.2 certificate-verified handshake", "tls12"),
@@ -195,7 +196,7 @@ def entries():
             elif marker == "P": tests += ["ipv4_fixture_checksums"]
             elif marker == "F": tests += ["required_unsafe_packet_cases_are_real_offline_fixtures"]
             elif marker != "C": tests += ["backend_contracts"]
-            if f"{family}-{index:03}" in ("TCP-033", "UDP-015", "DNS-021", "DNS-022", "SIP-011", "HTTP-035", "HTTP-036", "HTTP-037", "HTTP-038", "TLS-013"):
+            if f"{family}-{index:03}" in ("TCP-033", "UDP-015", "DNS-021", "DNS-022", "SIP-011", "HTTP-035", "HTTP-036", "HTTP-037", "HTTP-038", "HTTP-039", "TLS-013"):
                 tests += ["bounded_live_variants_execute_real_protocol_exchanges"]
             if backend in ("tcp_connect", "udp_echo", "http_get", "http_head", "http_options"):
                 tests += ["live_protocol_smoke"]

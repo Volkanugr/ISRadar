@@ -1,6 +1,6 @@
 # Implementation and validation status
 
-The scope is the **L3/L4/L7 sender agent** in the source specification. All 184 catalog entries map to executable source code: **129 bounded live checks, 41 offline event models, and 14 offline fixtures**. No `catalog_only` entries remain. `implemented` means source code exists; `verified` means validation is complete. Entries in this version are `implemented`, while vendor parity remains `unverified`.
+The scope is the **L3/L4/L7 sender agent** in the source specification. All 185 catalog entries map to executable source code: **130 bounded live checks, 41 offline event models, and 14 offline fixtures**. No `catalog_only` entries remain. `implemented` means source code exists; `verified` means validation is complete. Entries in this version are `implemented`, while vendor parity remains `unverified`.
 
 The 55 offline entries have no live-network implementation. Their `implemented` status refers to model/fixture code; it would be incorrect to count them as implemented live attacks or tests performed against a target firewall.
 
@@ -68,12 +68,12 @@ An HTTP probe identity header, a list of admitted identities retained across err
 | DNS | 18 | 4 | A/AAAA/MX/TXT/CNAME/NS/SOA/ANY, NXDOMAIN, EDNS0, recursion policy, TC inspection, compression, framed TCP/fallback, cryptographic DNSSEC A RRset, bounded fixed/unique-name query workloads |
 | NTP | 6 | 2 | v3/v4 mode-3→mode-4, origin nonce, leap/stratum, kiss-of-death classification |
 | SIP | 8 | 3 | OPTIONS over UDP/TCP/TLS and bounded OPTIONS workload; INVITE/REGISTER with a dedicated test identity; Call-ID/CSeq/Via checks, INVITE ACK/CANCEL/BYE cleanup |
-| HTTP/HTTPS | 24 | 14 | GET/POST/HEAD/PUT/PATCH/DELETE/OPTIONS/TRACE/CONNECT; HTTP/1.1/2/3; keep-alive/reuse, certificates, status, redirects, headers, health, bounded GET/POST/partial-header/slow-body workloads |
+| HTTP/HTTPS | 25 | 14 | GET/POST/HEAD/PUT/PATCH/DELETE/OPTIONS/TRACE/CONNECT; HTTP/1.1/2/3; keep-alive/reuse, certificates, status, redirects, headers, health, bounded GET/POST/partial-header/slow-body/Slowloris workloads |
 | TLS | 11 | 2 | 1.2/1.3 and bounded negotiation workload, certificate/hostname, secure cipher observation, ALPN, actual session resumption, version/expired/name-mismatch rejections |
 | Specialized | 0 | 10 | Multi-vector, distribution, low-rate/long occupancy, volume, synthetic request/reply ratio, IKEv2 SA_INIT, SMTP HELO, correlation/transition/recovery |
-| Total | **129** | **55** | **184** |
+| Total | **130** | **55** | **185** |
 
-Multiple entries use the same protocol implementation with different policy/transport conditions. The 184 entries are not 184 different attack tools or an exact copy of MazeBolt's private list.
+Multiple entries use the same protocol implementation with different policy/transport conditions. The 185 entries are not 185 different attack tools or an exact copy of MazeBolt's private list.
 
 ## Protocol details and limitations
 

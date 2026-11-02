@@ -167,6 +167,7 @@ Live checks use configured targets and limits. Offline models/fixtures do not tr
 | HTTP-036 | L7 | Bounded live HTTP POST workload | live_validation | `http_post` |
 | HTTP-037 | L7 | Bounded live partial-header HTTP workload | live_validation | `http_slow_headers` |
 | HTTP-038 | L7 | Bounded live slow-body HTTP workload | live_validation | `http_slow_body` |
+| HTTP-039 | L7 | Bounded live Slowloris sample | live_validation | `http_slow_headers` |
 | TLS-001 | L7 | TLS 1.2 certificate-verified handshake | live_validation | `tls12` |
 | TLS-002 | L7 | TLS 1.3 certificate-verified handshake | live_validation | `tls13` |
 | TLS-003 | L7 | TLS certificate-chain and hostname validation | live_validation | `tls_certificate` |

@@ -8,14 +8,14 @@ bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority
 
 Run from the repository root. Supply a numeric target IP and the hostname expected by its HTTPS/TLS certificate. The script requires Python 3, Docker CLI, and a running Docker engine. It builds the current agent image, prepares a fresh report directory, validates every selected configuration with networking disabled, and then runs the selected cases sequentially.
 
-The selection contains all **80 High-importance IDs** from [vectors.md](../vectors.md). Every ID appears in the final report. A missing service remains `needs_configuration`; it is not sent or marked successful.
+The selection contains all **81 High-importance IDs** from [vectors.md](../vectors.md). Every ID appears in the final report. A missing service remains `needs_configuration`; it is not sent or marked successful.
 
 ## Default web target
 
 | Target | Live-ready IDs | Offline-ready IDs | Awaiting configuration |
 | --- | ---: | ---: | ---: |
-| IPv4, HTTP 80 / HTTPS 443 | 13 | 47 | 20 |
-| IPv6, HTTP 80 / HTTPS 443 | 8 | 47 | 25 |
+| IPv4, HTTP 80 / HTTPS 443 | 13 | 47 | 21 |
+| IPv6, HTTP 80 / HTTPS 443 | 8 | 47 | 26 |
 
 The default IPv4 plan runs 14 steps: one combined offline step containing 47 IDs, followed by 13 live checks. Five live checks are raw TCP samples: TCP-009, TCP-013, TCP-014, TCP-015, and TCP-034. The other eight are HTTP-015/016/035 and TLS-001/002/003/007/013. IPv6 keeps those five IPv4-only raw samples pending.
 
@@ -25,14 +25,14 @@ Offline IDs execute once each in `offline-high-priority.yaml`, with Docker `--ne
 
 ## Configure the remaining services
 
-The [service example](../examples/high-priority-services.json) supplies endpoint settings for the 20 additional live entries. It uses the repository's development-service ports, DNS test key, and fixture CA. Adapt it to actual matching test services before using it against a target; the file does not start those services.
+The [service example](../examples/high-priority-services.json) supplies endpoint settings for the 21 additional live entries. It uses the repository's development-service ports, DNS test key, and fixture CA. Adapt it to actual matching test services before using it against a target; the file does not start those services.
 
 ```sh
 ISRADAR_HIGH_PRIORITY_SERVICES=examples/high-priority-services.json \
 bash scripts/docker-web-test.sh TARGET_IP certificate.example.com high-priority
 ```
 
-With matching services configured, an IPv4 plan contains **33 live + 47 offline IDs**, executed in 34 steps. An IPv6 plan contains **28 live + 47 offline + 5 pending IPv4-only IDs**. `live_ready` means configuration is available; it does not mean a service has already responded successfully.
+With matching services configured, an IPv4 plan contains **34 live + 47 offline IDs**, executed in 35 steps. An IPv6 plan contains **29 live + 47 offline + 5 pending IPv4-only IDs**. `live_ready` means configuration is available; it does not mean a service has already responded successfully.
 
 The JSON object is keyed by live High-importance vector ID. For example, to add just TCP echo and UDP echo:
 
@@ -75,11 +75,11 @@ touch reports/docker-web-ABC123/STOP
 
 Reports include:
 
-- `configs/index.json`: all 80 IDs, their High importance, execution mode, endpoint, and readiness or pending reason.
+- `configs/index.json`: all 81 IDs, their High importance, execution mode, endpoint, and readiness or pending reason.
 - `selected-cases.tsv`: the actual execution steps and budgets.
 - `*-validation.log`: preflight result for each selected YAML.
 - `*-report.json`, `*-summary.json`, `*-audit.jsonl`: results and diagnostics for attempted steps.
-- `catalog-results.json`: all 80 IDs matched to completed, partial, missing, or mismatched reports, with pending configurations retained.
+- `catalog-results.json`: all 81 IDs matched to completed, partial, missing, or mismatched reports, with pending configurations retained.
 
 The high-priority exit handler writes `catalog-results.json` on normal completion, preflight/runtime failure, or STOP once plan creation has succeeded. A preflight failure prevents all execution; STOP prevents admission of subsequent steps. An interrupted or failed step is not silently counted as successful. A forcibly killed host/process may require manual summarization:
 

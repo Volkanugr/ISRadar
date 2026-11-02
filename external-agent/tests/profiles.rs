@@ -18,7 +18,7 @@ fn high_priority_preset_contains_exactly_the_documented_high_vectors() {
             (columns.get(3) == Some(&"High")).then(|| columns[1].trim_matches('`').to_owned())
         })
         .collect();
-    assert_eq!(expected.len(), 80);
+    assert_eq!(expected.len(), 81);
     let presets = profiles::list().unwrap();
     let ids = presets.get("high-priority").unwrap();
     assert_eq!(ids.len(), expected.len());
@@ -82,7 +82,7 @@ fn high_priority_preset_contains_exactly_the_documented_high_vectors() {
         }
     }
     assert_eq!(actual, expected);
-    assert_eq!((live, offline, raw), (33, 47, 5));
+    assert_eq!((live, offline, raw), (34, 47, 5));
     assert!(destination.join("ca.der").is_file());
 }
 

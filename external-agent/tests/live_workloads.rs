@@ -169,6 +169,7 @@ async fn bounded_live_variants_execute_real_protocol_exchanges() {
         ("HTTP-036", "POST", "isradar-test", false),
         ("HTTP-037", "GET", "", true),
         ("HTTP-038", "POST", "isradar-test", true),
+        ("HTTP-039", "GET", "", true),
     ] {
         let listener = TcpListener::bind("127.0.0.1:0").await.unwrap();
         let address = listener.local_addr().unwrap();

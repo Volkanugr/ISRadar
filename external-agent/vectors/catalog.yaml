@@ -2899,6 +2899,24 @@ vectors:
     automated_tests: ["catalog_integrity", "backend_contracts", "bounded_live_variants_execute_real_protocol_exchanges", "http_policy_failures_preserve_observed_status_and_response"]
     vendor_parity: "unverified"
     ip_version: null
+  - id: "HTTP-039"
+    name: "Bounded live Slowloris sample"
+    family: "HTTP"
+    category: "http"
+    layer: "L7"
+    protocol: "HTTP"
+    mode: "live_validation"
+    risk: "low"
+    enabled: true
+    requires_lab: false
+    implementation_status: "implemented"
+    backend: "http_slow_headers"
+    description: "Bounded protocol check against an exact configured numeric destination. No inference about security-appliance blocking. Sends one complete exchange per probe, split into two chunks with a 25 ms delay; no capacity-exhaustion or Slowloris/RUDY equivalence claim."
+    references: ["https://www.rfc-editor.org/rfc/rfc9110"]
+    supported_parameters: ["target", "limits", "protocol"]
+    automated_tests: ["catalog_integrity", "backend_contracts", "bounded_live_variants_execute_real_protocol_exchanges", "http_policy_failures_preserve_observed_status_and_response"]
+    vendor_parity: "unverified"
+    ip_version: null
   - id: "TLS-001"
     name: "TLS 1.2 certificate-verified handshake"
     family: "TLS"

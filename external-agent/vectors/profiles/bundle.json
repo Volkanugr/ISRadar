@@ -89,6 +89,7 @@
       "HTTP-036",
       "HTTP-037",
       "HTTP-038",
+      "HTTP-039",
       "TLS-001",
       "TLS-002",
       "TLS-003",
@@ -263,6 +264,7 @@
       "HTTP-036",
       "HTTP-037",
       "HTTP-038",
+      "HTTP-039",
       "TLS-001",
       "TLS-002",
       "TLS-003",
@@ -468,6 +470,7 @@
       "HTTP-036",
       "HTTP-037",
       "HTTP-038",
+      "HTTP-039",
       "TLS-001",
       "TLS-002",
       "TLS-003",
@@ -4786,6 +4789,42 @@
           "expected_status": 200,
           "expected_headers": {},
           "dedicated_test_endpoint": true
+        }
+      }
+    },
+    "HTTP-039": {
+      "vectors": [
+        "HTTP-039"
+      ],
+      "mode": "live_validation",
+      "target": {
+        "ip": "127.0.0.1",
+        "port": 9002,
+        "server_name": null
+      },
+      "limits": {
+        "duration_seconds": 15,
+        "probes_per_second": 1,
+        "concurrency": 1,
+        "bandwidth_bytes_per_second": 8192,
+        "max_probes": 3,
+        "timeout_ms": 2000
+      },
+      "kill_switch": "STOP",
+      "controller_lease": null,
+      "measurement": null,
+      "health": {
+        "consecutive_failures": 3,
+        "max_latency_ms": 3000
+      },
+      "protocol": {
+        "http": {
+          "path": "/",
+          "body": "",
+          "headers": {},
+          "expected_status": 200,
+          "expected_headers": {},
+          "dedicated_test_endpoint": false
         }
       }
     },

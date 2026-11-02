@@ -6,7 +6,7 @@ ISRadar is a Rust sender for bounded network protocol validation across L3, L4, 
 
 Read [README.md](README.md) for usage, the [product specification](MazeBolt_DDoS_Trafik_Ajani_Promptu.md) for intended scope, and [docs/status.md](docs/status.md) for implementation and validation evidence. The specification's example directory tree is conceptual; the source map below describes the actual layout.
 
-The catalog has 184 entries: 33 L3, 49 L4, and 102 L7. It contains 129 bounded live checks and 55 offline entries (41 event models and 14 packet/protocol fixtures). L4 contains 42 live implementations and 7 offline models. `implemented` means code exists for the declared mode; it does not mean live-network verification, an independent attack implementation, or vendor parity. Offline entries have no live-network implementation.
+The catalog has 185 entries: 33 L3, 49 L4, and 103 L7. It contains 130 bounded live checks and 55 offline entries (41 event models and 14 packet/protocol fixtures). L4 contains 42 live implementations and 7 offline models. `implemented` means code exists for the declared mode; it does not mean live-network verification, an independent attack implementation, or vendor parity. Offline entries have no live-network implementation.
 
 ## Stack and source map
 
@@ -93,7 +93,7 @@ The workflow is `run --config ... --output ...`; the engine validates the plan a
 ./target/debug/external-agent validate --config profiles/l4/TCP-001.yaml
 ```
 
-Presets are `basic`, `sophisticated`, `researcher`, `hacker`, `l4`, and `high-priority`. The latter contains all 80 High-importance entries from `vectors.md` (33 live and 47 offline). They default to loopback. Service-dependent checks need matching endpoints; missing UDP/echo services must not be silently directed to HTTP ports. Configuration validation does not establish target availability.
+Presets are `basic`, `sophisticated`, `researcher`, `hacker`, `l4`, and `high-priority`. The latter contains all 81 High-importance entries from `vectors.md` (34 live and 47 offline). They default to loopback. Service-dependent checks need matching endpoints; missing UDP/echo services must not be silently directed to HTTP ports. Configuration validation does not establish target availability.
 
 The Docker runner supports `baseline`, `signature`, `hacker-web`, `full-test`, `all-vectors`, `l4-test`, and `high-priority`. `hacker-web` differs from the CLI's `hacker` preset. See [profiles](docs/profiles.md), [L4 tests](docs/l4-test.md), [High-priority tests](docs/high-priority-test.md), and [UniFi tests](docs/unifi-test.md) for selection, ports, and current plan counts. [Native Linux deployment](deploy.md) is supported; Docker is optional.
 
